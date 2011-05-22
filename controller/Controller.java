@@ -6,6 +6,7 @@ import java.util.concurrent.BlockingQueue;
 
 import javax.swing.JOptionPane;
 
+import pl.edu.pw.elka.www.proz.tetris.events.DisplayHighScoreEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.KeyDownPressedEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.KeyLeftPressedEvent;
@@ -98,7 +99,7 @@ public class Controller implements Runnable
 		actionMap.put(KeyUpPressedEvent.class, new RotateAction());
 		actionMap.put(SpacePressedEvent.class, new DropDownAction());
 		actionMap.put(TimerTickEvent.class, new TimerTickAction());
-		actionMap.put(NewHighScoreEvent.class, new SaveHighScoreAction());
+		actionMap.put(DisplayHighScoreEvent.class, new DisplayHighScoreAction());
 	}
 	
 	/**
@@ -304,12 +305,16 @@ public class Controller implements Runnable
 		
 	}
 	
-	private class SaveHighScoreAction extends GameAction
+	/**
+	 * Akcja reprezentująca pobranie najlepszych wyników
+	 */
+	private class DisplayHighScoreAction extends GameAction
 	{
 
 		@Override
-		public void execute() {
-		
+		public void execute() 
+		{
+			view.showHighScoreDialog(model.getFakeHighScore());
 		}
 		
 	}

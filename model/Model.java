@@ -1,6 +1,9 @@
 package pl.edu.pw.elka.www.proz.tetris.model;
 
+import java.util.Iterator;
+
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeBoard;
+import pl.edu.pw.elka.www.proz.tetris.fake.FakeHighScore;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeScore;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
 
@@ -51,7 +54,7 @@ public class Model {
 		board = new TetrisBoard();
 		shapeFactory = new RandomShapeFactory();
 		currentShape = null;
-		nextShape = shapeFactory.getRandomShape();
+		nextShape = null;
 		highScore = new HighScore();
 	}
 	
@@ -65,6 +68,7 @@ public class Model {
 		board.clear();
 		level = 1;
 		score = 0;
+		nextShape = shapeFactory.getRandomShape();
 		addNewShape();
 	}
 	
@@ -332,6 +336,20 @@ public class Model {
 			highScore.addScore(playerName, score);
 			highScore.save();
 		}
+	}
+	
+	public FakeHighScore getFakeHighScore()
+	{
+		Object[][] data = new Object[highScore.getScores().size()][2];
+		
+		int rowCount = 0;
+		
+		for (Score score : highScore.getScores()) {
+			data[rowCount][0] = score.getPlayerName();
+			data[rowCount][1] = score.getScore();
+			rowCount++;
+		}
+		return new FakeHighScore(data);
 	}
 	
 }

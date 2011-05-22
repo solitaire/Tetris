@@ -11,6 +11,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import pl.edu.pw.elka.www.proz.tetris.events.DisplayHighScoreEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.DisplayHighScores;
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.StartButtonPressedEvent;
@@ -18,14 +19,16 @@ import pl.edu.pw.elka.www.proz.tetris.events.StartButtonPressedEvent;
 
 /**
  * Glowne okno aplikacji
- * @author Anna Stepien
  *
  */
 public class GameFrame extends JFrame
 {
 	
+
+	private static final long serialVersionUID = 6612287178378405109L;
+	/** Menu */
 	private final JMenuBar menuBar;
-	private final ScoreDialog scoreDialog;
+	/** Kolejka zdarzeń */
 	private BlockingQueue<GameEvent> eventQueue;
 	
 	public GameFrame(BlockingQueue<GameEvent> queue)
@@ -63,7 +66,12 @@ public class GameFrame extends JFrame
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				scoreDialog.setVisible(true);
+				try {
+					eventQueue.put(new DisplayHighScoreEvent());
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		

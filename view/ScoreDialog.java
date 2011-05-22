@@ -2,8 +2,8 @@ package pl.edu.pw.elka.www.proz.tetris.view;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JList;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeHighScore;
 
@@ -12,15 +12,18 @@ class ScoreDialog extends JDialog
 	
 	private static final long serialVersionUID = 2282191363055377316L;
 
-	public ScoreDialog(JFrame parent, final FakeHighScore highScore)
+	public ScoreDialog(JFrame parent)
 	{
 		super(parent, true);
-		JList scores = JList(list(highScore.getHighScore()));
-		add(new JScrollPane(scores));
 		setSize(200, 400);
 	}
 	
-	public void display(){
+	public void display(FakeHighScore fakeHighScore)
+	{
+		JTable table = new JTable(fakeHighScore);
+		JScrollPane scrollPane = new JScrollPane(table);
+		table.setFillsViewportHeight(true);
+		add(scrollPane);
 		setVisible(true);
 	}
 }

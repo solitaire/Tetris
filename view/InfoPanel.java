@@ -13,6 +13,8 @@ import pl.edu.pw.elka.www.proz.tetris.fake.FakeScore;
 class InfoPanel extends JPanel 
 {
 	
+	private static final long serialVersionUID = -6581047491363585470L;
+
 	/** Liczba zdobytych punktów */
 	private final JLabel score;
 	
@@ -49,7 +51,7 @@ class InfoPanel extends JPanel
 	 */
 	public void updateRemovedRows(FakeScore fake)
 	{
-		removedRows.setText("Usunięte wiersze!: " + String.valueOf(fake.getRemovedRows()));
+		removedRows.setText("Usunięte wiersze: " + String.valueOf(fake.getRemovedRows()));
 	}
 	
 	/**

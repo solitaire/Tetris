@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.util.concurrent.BlockingQueue;
 
 import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
@@ -18,23 +16,24 @@ import pl.edu.pw.elka.www.proz.tetris.events.SpacePressedEvent;
 
 /**
  * Realizuje obsługę klawiatury
- * 
- * @author Anna Stępień
  *
  */
-class KeyHandler {
+class KeyHandler 
+{
 	
 	private BlockingQueue<GameEvent> eventQueue;
 	private final JComponent component;
 	
-	public KeyHandler(JComponent jComponent, BlockingQueue<GameEvent> queue){
+	public KeyHandler(JComponent jComponent, BlockingQueue<GameEvent> queue)
+	{
 		component = jComponent;
 		eventQueue = queue;
 		createInputMap();
 		createActionMap();
 	}
 	
-	private void createInputMap(){
+	private void createInputMap()
+	{
 	    component.getInputMap().put(KeyStroke.getKeyStroke("SPACE"), "space");
 	    component.getInputMap().put(KeyStroke.getKeyStroke("UP"), "keyup");
 	    component.getInputMap().put(KeyStroke.getKeyStroke("RIGHT"), "keyright");
@@ -42,7 +41,8 @@ class KeyHandler {
 	    component.getInputMap().put(KeyStroke.getKeyStroke("LEFT"), "keyleft");
 	}
 	
-	private void createActionMap(){
+	private void createActionMap()
+	{
 	    component.getActionMap().put("space", new AbstractAction() {
 			
 			@Override
@@ -72,6 +72,8 @@ class KeyHandler {
 	    
 	    component.getActionMap().put("keydown", new AbstractAction() {
 			
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				eventQueue.add(new KeyDownPressedEvent());
@@ -81,6 +83,8 @@ class KeyHandler {
 	    
 	    component.getActionMap().put("keyleft", new AbstractAction() {
 			
+			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				eventQueue.add(new KeyLeftPressedEvent());

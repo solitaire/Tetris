@@ -10,6 +10,7 @@ import javax.swing.SwingUtilities;
 
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeBoard;
+import pl.edu.pw.elka.www.proz.tetris.fake.FakeHighScore;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeScore;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
 
@@ -17,7 +18,8 @@ import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
  * Widok gry
  *
  */
-public class View {
+public class View 
+{
 	
 	/* Kolejka blokujaca */
 	private BlockingQueue<GameEvent> eventQueue;
@@ -36,7 +38,7 @@ public class View {
 	
 	private Container rightContainer;
 	
-	private HighScoreDialog highScoreDialog;
+	private ScoreDialog highScoreDialog;
 
 	/**
 	 * Tworzy nowy obiekt widoku
@@ -51,6 +53,8 @@ public class View {
 		infoPanel = new InfoPanel();
 		rightContainer = new Container();
 		previewPanel = new PreviewPanel();
+		
+		highScoreDialog = new ScoreDialog(gameFrame);
 
 		
 		gameFrame.setLayout(new BorderLayout());
@@ -160,11 +164,33 @@ public class View {
 		});
 	}
 
-	public void showGameOverDialog() {
-		JOptionPane.showMessageDialog(gameFrame,"Koniec gry!", "Tetris", JOptionPane.PLAIN_MESSAGE);	
+	/**
+	 * Wyświetla okienko z informacją o końcu gry
+	 */
+	public void showGameOverDialog() 
+	{
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				JOptionPane.showMessageDialog(gameFrame,"Koniec gry!", "Tetris", JOptionPane.PLAIN_MESSAGE);	
+			}
+		});
 	}
 	
-	public void showHighScoreDialog(){
-	
+	/**
+	 * Wyświetla okienko z punktacją
+	 * @param fakeHighScore
+	 */
+	public void showHighScoreDialog(final FakeHighScore fakeHighScore)
+	{
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				highScoreDialog.display(fakeHighScore);
+			}
+		});
+
 	}
 }

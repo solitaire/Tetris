@@ -5,22 +5,19 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeBlock;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
 
 /**
- * 
- * @author Anna Stępień
+ * Panel wyświetlający podgląd na następny klocek
  *
  */
 class PreviewPanel extends JPanel 
 {
 	
+	private static final long serialVersionUID = -681786707529383734L;
 	private Image preview;
 	
 	

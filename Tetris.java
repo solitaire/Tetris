@@ -4,8 +4,6 @@ package pl.edu.pw.elka.www.proz.tetris;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import javax.swing.JMenuItem;
-import javax.swing.SwingUtilities;
 import pl.edu.pw.elka.www.proz.tetris.controller.Controller;
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
 import pl.edu.pw.elka.www.proz.tetris.model.Model;
