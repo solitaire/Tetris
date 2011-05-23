@@ -112,7 +112,8 @@ public class Controller implements Runnable
 		public void execute() 
 		{
 			
-			if (model.isGameRunning()){
+			if (model.isGameRunning())
+			{
 				model.dropCurrentShapeDown();
 				model.addDropPoints();
 				view.updateBoard(model.getBoard());	
@@ -130,12 +131,15 @@ public class Controller implements Runnable
 		@Override
 		public void execute() 
 		{
-				if (model.isGameRunning()){
-					if (model.canMove(new Coordinates(0, -1))){
+				if (model.isGameRunning())
+				{
+					if (model.canMove(new Coordinates(0, -1)))
+					{
 						model.moveCurrentShapeDown();
 						model.addFallPoints();
 					}
-					else{
+					else
+					{
 						model.dropCurrentShapeDown();
 					}
 					view.updateBoard(model.getBoard());
@@ -154,8 +158,10 @@ public class Controller implements Runnable
 		@Override
 		public void execute() 
 		{
-			if (model.isGameRunning()){
-				if (model.canMove(new Coordinates(-1, 0))){
+			if (model.isGameRunning())
+			{
+				if (model.canMove(new Coordinates(-1, 0)))
+				{
 					model.moveCurrentShapeLeft();
 					view.updateBoard(model.getBoard());
 				}		
@@ -173,8 +179,10 @@ public class Controller implements Runnable
 		@Override
 		public void execute() 
 		{
-			if (model.isGameRunning()){
-				if (model.canMove(new Coordinates(1, 0))){
+			if (model.isGameRunning())
+			{
+				if (model.canMove(new Coordinates(1, 0)))
+				{
 					model.moveCurrentShapeRight();
 				}
 				view.updateBoard(model.getBoard());
@@ -192,8 +200,10 @@ public class Controller implements Runnable
 		@Override
 		public void execute() 
 		{
-			if (model.isGameRunning()){
-				if (model.canRotate()){
+			if (model.isGameRunning())
+			{
+				if (model.canRotate())
+				{
 					model.rotateCurrentShape();
 					view.updateBoard(model.getBoard());
 				}
@@ -232,11 +242,13 @@ public class Controller implements Runnable
 		public void execute() 
 		{
 			
-			if (model.isGamePaused()){
+			if (model.isGamePaused())
+			{
 				model.resumeGame();
 				gameTimer.start();
 			}
-			else if (model.isGameRunning()){
+			else if (model.isGameRunning())
+			{
 				model.pauseGame();
 				gameTimer.stop();
 			}
@@ -273,20 +285,33 @@ public class Controller implements Runnable
 		@Override
 		public void execute() {
 			
-			if (model.isGameRunning()){
+			if (model.isGameRunning())
+			{
 				gameTimer.setDelay(model.getGameSpeed());
-				if (model.canMove(new Coordinates(0, -1))){
+				if (model.canMove(new Coordinates(0, -1)))
+				{
 					model.moveCurrentShapeDown();
 					model.addRemovedRowPoints(model.removeFullRows());
+					view.updateBoard(model.getBoard());
+					view.updateScore(model.getScore());
+					view.updatePreviewBoard(model.getNextShape());
 				}
-				else{
+				else
+				{
 					model.dropCurrentShapeDown();
 					model.addRemovedRowPoints(model.removeFullRows());
-					if (model.canAddNewShape()){
+					
+					if (model.canAddNewShape())
+					{
 						model.addNewShape();
+						view.updateBoard(model.getBoard());
+						view.updateScore(model.getScore());
+						view.updatePreviewBoard(model.getNextShape());
 					}
-					else{
-						if (model.isHighScore()){
+					else
+					{
+						if (model.isHighScore())
+						{
 							String name;
 							name = JOptionPane.showInputDialog(null, "Najlepsze wyniki", "Podaj imię",
 							        JOptionPane.INFORMATION_MESSAGE);
@@ -294,11 +319,11 @@ public class Controller implements Runnable
 						}
 						model.endGame();
 						view.clearBoard();
+						view.updateScore(model.getScore());
+						view.updatePreviewBoard(model.getNextShape());
 					}
 				}
-				view.updateBoard(model.getBoard());
-				view.updateScore(model.getScore());
-				view.updatePreviewBoard(model.getNextShape());
+				
 			}
 			
 		}
