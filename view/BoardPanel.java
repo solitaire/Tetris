@@ -66,16 +66,20 @@ class BoardPanel extends JPanel
 		grid = createImage(365, 665);
 		g = grid.getGraphics();
 		try{
-			for (ArrayList<FakeBlock> row : board.getRows()) {
-				for (FakeBlock block : row) {
+			for (ArrayList<FakeBlock> row : board.getRows()) 
+			{
+				for (FakeBlock block : row) 
+				{
 					paintBlock(g, block);
 				}
 			}
 		}
-		catch(NullPointerException e){
+		catch(NullPointerException e)
+		{
 			grid = null;
 		}
-		finally{
+		finally
+		{
 			repaint();
 		}
 		
@@ -102,7 +106,9 @@ class BoardPanel extends JPanel
 		
 		g.setColor(Color.GRAY);
 		g.drawRect((block.getPosition().getX())*30, (block.getPosition().getY())*30, 30, 30);
-		if (block.getColor() != null){
+		
+		if (block.getColor() != null)
+		{
 			g.setColor(block.getColor());
 			g.fillRect((block.getPosition().getX()*30)+1, (block.getPosition().getY()*30)+1, 29, 29);
 		}

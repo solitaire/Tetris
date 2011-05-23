@@ -280,10 +280,12 @@ public class Controller implements Runnable
 	 * Akcja reprezentująca kwant czasu timera
 	 *
 	 */
-	private class TimerTickAction extends GameAction{
+	private class TimerTickAction extends GameAction
+	{
 
 		@Override
-		public void execute() {
+		public void execute() 
+		{
 			
 			if (model.isGameRunning())
 			{
