@@ -9,10 +9,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 import pl.edu.pw.elka.www.proz.tetris.events.DisplayHighScoreEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.DisplayHighScores;
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.StartButtonPressedEvent;
 

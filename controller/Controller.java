@@ -12,7 +12,6 @@ import pl.edu.pw.elka.www.proz.tetris.events.KeyDownPressedEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.KeyLeftPressedEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.KeyRightPressedEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.KeyUpPressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.NewHighScoreEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.PauseButtonPressedEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.SpacePressedEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.StartButtonPressedEvent;
@@ -260,6 +259,7 @@ public class Controller implements Runnable
 			model.endGame();
 			view.updateScore(model.getScore());
 			view.updatePreviewBoard(model.getNextShape());
+			view.clearBoard();
 		}
 		
 	}

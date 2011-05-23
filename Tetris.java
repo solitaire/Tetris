@@ -30,6 +30,7 @@ public class Tetris
 		
 		view.display();
 		
-		controller.run();
+		Thread controllerThread = new Thread(controller);
+		controllerThread.start();
 	}
 }
