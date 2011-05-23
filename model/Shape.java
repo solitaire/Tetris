@@ -16,13 +16,10 @@ class Shape
 	
 	/*  Współrzdne środka */
 	private Coordinates center;
-	
 	/*Kolor*/
 	private Color color;
-	
 	/* Zbiór punktów tworzących klocek */
 	private Set<Coordinates> blocks;
-	
 	/** Strategia obrotów */
 	private RotationStrategy rotationStrategy;
 	

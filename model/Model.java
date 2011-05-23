@@ -1,7 +1,5 @@
 package pl.edu.pw.elka.www.proz.tetris.model;
 
-import java.util.Iterator;
-
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeBoard;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeHighScore;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeScore;
@@ -14,35 +12,28 @@ import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
 public class Model {
 	
 	/** Bonusowe punkty za usunięty wiersz */
-	private final static int removedRowBonus  = 15;
+	private final static int REMOVED_ROWS_BONUS  = 15;
 	/** Bonusowe punkty za opuszczenie klocka na dno planszy */
-	private final static int instantDropBonus = 10;
+	private final static int INSTANT_DROP_BONUS = 10;
 	/** Bonusowe punkty za przyspieszenie opadania */
-	private final static int fallBonus = 5;
+	private final static int FALL_BONUS = 5;
 	/** Maksymalna liczba najlepszych wyników */
 	private final static int MAX_HIGHSCORES = 10;
 	
 	/** Bieżący klocek poruszający się po planszy */
 	private Shape currentShape;
-	
 	/** Następny klocek jaki pojawi się na planszy */
 	private Shape nextShape;
-	
 	/** Stan gry */
 	private GameState state;
-	
 	/** Plansza gry */
 	private TetrisBoard board;
-	
 	/* Fabryka losowych klocków */
 	private RandomShapeFactory shapeFactory;
-	
 	/** Poziom */
 	private int level;
-	
 	/** Wynik */
 	private int score;
-	
 	/** Najlepsze wyniki */
 	private HighScore highScore;
 	
@@ -244,10 +235,12 @@ public class Model {
 	 */
 	public final FakeShape getNextShape()
 	{
-		try {
+		try 
+		{
 			return nextShape.getFake();
 		}
-		catch(NullPointerException e){
+		catch(NullPointerException e)
+		{
 			return null;
 		}
 	}
@@ -258,10 +251,12 @@ public class Model {
 	 */
 	public final FakeBoard getBoard()
 	{
-		try{
+		try
+		{
 			return board.getFakeWithCurrentShape(currentShape);
 		}
-		catch(NullPointerException e){
+		catch(NullPointerException e)
+		{
 			return null;
 		}
 	}
@@ -304,7 +299,7 @@ public class Model {
 	 */
 	public void addFallPoints()
 	{
-		score += getLevel()*fallBonus;
+		score += getLevel()*FALL_BONUS;
 	}
 	
 	/**
@@ -312,7 +307,7 @@ public class Model {
 	 */
 	public void addDropPoints()
 	{
-		score += getLevel()*instantDropBonus;
+		score += getLevel()*INSTANT_DROP_BONUS;
 	}
 	
 	/**
@@ -321,7 +316,7 @@ public class Model {
 	 */
 	public void addRemovedRowPoints(final int num)
 	{
-		score += getLevel()*num*removedRowBonus;
+		score += getLevel()*num*REMOVED_ROWS_BONUS;
 	}
 	
 	
@@ -332,7 +327,8 @@ public class Model {
 	 */
 	public void recordScore(String playerName)
 	{
-		if (playerName != null){
+		if (playerName != null)
+		{
 			highScore.addScore(playerName, score);
 			highScore.save();
 		}
@@ -344,7 +340,8 @@ public class Model {
 		
 		int rowCount = 0;
 		
-		for (Score score : highScore.getScores()) {
+		for (Score score : highScore.getScores()) 
+		{
 			data[rowCount][0] = score.getPlayerName();
 			data[rowCount][1] = score.getScore();
 			rowCount++;

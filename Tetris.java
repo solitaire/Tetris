@@ -28,9 +28,10 @@ public class Tetris
 		final Model model = new Model();
 		final Controller controller = new Controller(model, view, eventQueue);
 		
-		view.display();
-		
 		Thread controllerThread = new Thread(controller);
 		controllerThread.start();
+		
+		view.display();
+
 	}
 }

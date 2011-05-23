@@ -7,10 +7,9 @@ package pl.edu.pw.elka.www.proz.tetris.model;
 public class Coordinates 
 {
 	
-	/* Współrzędna x */
+	/** Współrzędna x */
 	private int x;
-	
-	/* Współrzędna y */
+	/** Współrzędna y */
 	private int y;
 	
 	/**

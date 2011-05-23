@@ -45,7 +45,7 @@ class HighScore
 	 * od najlepszego do najsłabszego
 	 * @return lita najlepszych wyników
 	 */
-	public final synchronized ArrayList<Score> getScores()
+	public final ArrayList<Score> getScores()
 	{
 		Collections.sort(highScores);
 		return highScores;
@@ -57,25 +57,32 @@ class HighScore
 	public  void load()
 	{
 		ObjectInputStream inputStream = null;
-		try{
+		try
+		{
 			inputStream = new ObjectInputStream(new FileInputStream(HIGHSCORE_FILE));
 			highScores = (ArrayList<Score>) inputStream.readObject();
 		}
-		catch(FileNotFoundException e1){
+		catch(FileNotFoundException e1)
+		{
 			e1.printStackTrace();
 		}
-		catch (ClassNotFoundException e){
+		catch (ClassNotFoundException e)
+		{
 			e.printStackTrace();
 		}
-		catch(IOException e2){
+		catch(IOException e2)
+		{
 			e2.printStackTrace();
 		}
-		finally{
-			try{
+		finally
+		{
+			try
+			{
 				if (inputStream != null)
 					inputStream.close();
 			}
-			catch (IOException e){
+			catch (IOException e)
+			{
 				e.printStackTrace();
 			}
 		}
@@ -84,24 +91,31 @@ class HighScore
 	/**
 	 * Zapisuje listę najlepszych wyników do pliku
 	 */
-	public  void save(){
+	public  void save()
+	{
 		ObjectOutputStream outputStream = null;
-		try{
+		try
+		{
 			outputStream = new ObjectOutputStream(new FileOutputStream(HIGHSCORE_FILE));
 			outputStream.writeObject(highScores);
 		}
-		catch(FileNotFoundException e1){
+		catch(FileNotFoundException e1)
+		{
 			e1.printStackTrace();
 		}
-		catch (IOException e2){
+		catch (IOException e2)
+		{
 			e2.printStackTrace();
 		}
-		finally{
-			try{
+		finally
+		{
+			try
+			{
 				if (outputStream != null)
 					outputStream.close();
 			}
-			catch(IOException e){
+			catch(IOException e)
+			{
 				e.printStackTrace();
 			}
 		}

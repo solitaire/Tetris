@@ -15,17 +15,13 @@ class TetrisBoard
 {
 	
 	/* Wysokość planszy*/
-	private final int height = 22;
-	
+	private final static int HEIGHT = 22;
 	/* Szerokość planszy */
-	private final int length = 12;
-	
+	private final static int LENGTH = 12;
 	/* Kolor obramowania planszy */
 	private final Color borderColor = Color.DARK_GRAY;
-	
 	/* Lista przechowująca wiersze składające się na planszę */
 	private ArrayList<Row> board;
-	
 	/*  Liczba usuniętych wierszy */
 	private int removedRows;
 	
@@ -42,9 +38,9 @@ class TetrisBoard
 		
 		public Row()
 		{
-			blocks = new ArrayList<Block>(length);
+			blocks = new ArrayList<Block>(LENGTH);
 			
-			for (int i = 0; i < length; ++i)
+			for (int i = 0; i < LENGTH; ++i)
 			{
 				blocks.add(new Block());
 			}
@@ -52,9 +48,9 @@ class TetrisBoard
 		
 		public Row(final Color color)
 		{
-			blocks = new ArrayList<Block>(length);
+			blocks = new ArrayList<Block>(LENGTH);
 			
-			for (int i = 0; i < length; ++i)
+			for (int i = 0; i < LENGTH; ++i)
 			{
 				blocks.add(new Block(color));
 			}
@@ -95,7 +91,8 @@ class TetrisBoard
 		 */
 		public boolean isFull()
 		{
-			for (Block block : blocks) {
+			for (Block block : blocks) 
+			{
 				if (block.getColor() == null)
 					return false;
 			}
@@ -121,10 +118,10 @@ class TetrisBoard
 	 */
 	public TetrisBoard()
 	{
-		board  = new ArrayList<Row>(height);
+		board  = new ArrayList<Row>(HEIGHT);
 		removedRows = 0;
 		
-		for (int i = 0; i < height; ++i)
+		for (int i = 0; i < HEIGHT; ++i)
 		{
 			board.add(new Row());
 		}
@@ -152,10 +149,12 @@ class TetrisBoard
 	public void setBlock(final Coordinates position, final Color color)
 	{
 		
-		try{
-			board.get(height-1-position.getY()).setBlock(position.getX(), color);
+		try
+		{
+			board.get(HEIGHT-1-position.getY()).setBlock(position.getX(), color);
 		}
-		catch (IndexOutOfBoundsException e){
+		catch (IndexOutOfBoundsException e)
+		{
 			System.out.println("Index bloku jest poza zakresem");
 		}
 		
@@ -169,10 +168,12 @@ class TetrisBoard
 	public boolean isOccupied(final Coordinates position)
 	{
 
-		try{
-			return board.get(height-1-position.getY()).getBlock(position.getX()).getColor() != null;
+		try
+		{
+			return board.get(HEIGHT-1-position.getY()).getBlock(position.getX()).getColor() != null;
 		}
-		catch (IndexOutOfBoundsException e){
+		catch (IndexOutOfBoundsException e)
+		{
 			System.out.println("Index bloku jest poza zakresem.");
 		}
 		
@@ -201,7 +202,7 @@ class TetrisBoard
 		
 		ArrayList<Row> fullRows = new ArrayList<Row>();
 		
-		for (Row row : board.subList(1, height-1)) 
+		for (Row row : board.subList(1, HEIGHT-1)) 
 		{
 			if (row.isFull())
 			{
@@ -212,7 +213,7 @@ class TetrisBoard
 		numOfRemoved = fullRows.size();
 		board.removeAll(fullRows);
 		
-		while(board.size() != height)
+		while(board.size() != HEIGHT)
 		{
 			board.add(1, new Row());
 		}
@@ -237,7 +238,7 @@ class TetrisBoard
 	public void clear()
 	{
 		removedRows = 0;
-		for (Row row : board.subList(1, height-1)) 
+		for (Row row : board.subList(1, HEIGHT-1)) 
 		{
 			row.clear();
 		}
@@ -276,7 +277,8 @@ class TetrisBoard
 			ArrayList<FakeBlock> fakeBlocks = new ArrayList<FakeBlock>();
 			j = 0;
 			
-			for (Block block : row.getBlocks()) {
+			for (Block block : row.getBlocks()) 
+			{
 				fakeBlocks.add(new FakeBlock(new Coordinates(j, i), block.getColor()));
 				j++;
 			}

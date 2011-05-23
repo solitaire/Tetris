@@ -9,14 +9,63 @@ import java.util.Random;
 class RandomShapeFactory 
 {
 	
-	enum ShapeTypes{
-		I_SHAPE{ Factory getFactory() { return new IShapeFactory(); }},
-		O_SHAPE{ Factory getFactory() { return new OShapeFactory(); }},
-		T_SHAPE{ Factory getFactory() { return new TShapeFactory(); }},
-		Z_SHAPE{ Factory getFactory() { return new ZShapeFactory(); }},
-		S_SHAPE{ Factory getFactory() { return new SShapeFactory(); }},
-		J_SHAPE{ Factory getFactory() { return new JShapeFactory(); }},
-		L_SHAPE{ Factory getFactory() { return new LShapeFactory(); }};
+	enum ShapeTypes
+	{
+		I_SHAPE
+		{
+			Factory getFactory() 
+			{ 
+				return new IShapeFactory();
+			}
+		},
+		
+		O_SHAPE
+		{ 
+			Factory getFactory() 
+			{ 
+				return new OShapeFactory(); 
+			}
+		},
+		
+		T_SHAPE
+		{ 
+			Factory getFactory() 
+			{ 
+				return new TShapeFactory(); 
+			}
+		},
+		
+		Z_SHAPE
+		{ 
+			Factory getFactory() 
+			{ 
+				return new ZShapeFactory();
+			}
+		},
+		
+		S_SHAPE
+		{ 
+			Factory getFactory() 
+			{ 
+				return new SShapeFactory();
+			}
+		},
+		
+		J_SHAPE
+		{ 
+			Factory getFactory() 
+			{ 
+				return new JShapeFactory();
+			}
+		},
+		
+		L_SHAPE
+		{ 
+			Factory getFactory() 
+			{ 
+				return new LShapeFactory(); 
+			}
+		};
 		
 		abstract Factory getFactory();
 	}

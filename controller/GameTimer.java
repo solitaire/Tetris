@@ -21,7 +21,6 @@ class GameTimer
 	
 	/* Timer */
 	private Timer timer;
-	
 	/* Kolejka blokująca */
 	private BlockingQueue<GameEvent> eventQueue;
 	
@@ -34,13 +33,18 @@ class GameTimer
 	public GameTimer(int delay, BlockingQueue<GameEvent> queue)
 	{
 		eventQueue = queue;
-		timer = new Timer(delay, new ActionListener() {
+		timer = new Timer(delay, new ActionListener() 
+		{
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
 					eventQueue.put(new TimerTickEvent());
-				} catch (InterruptedException ex) {
+				} 
+				catch (InterruptedException ex) 
+				{
 					ex.printStackTrace();
 				}
 				

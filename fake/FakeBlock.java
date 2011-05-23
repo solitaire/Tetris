@@ -8,12 +8,12 @@ import pl.edu.pw.elka.www.proz.tetris.model.Coordinates;
  * Klasa reprezentująca pojedyczny blok planszy
  *
  */
-public class FakeBlock {
+public class FakeBlock 
+{
 	
 	
 	/** Współrzędne bloku */
 	private Coordinates positon;
-	
 	/** Kolor bloku */
 	private Color color;
 	
@@ -22,7 +22,8 @@ public class FakeBlock {
 	 * @param positon Położenie bloczka
 	 * @param color Kolor bloczka
 	 */
-	public FakeBlock(final Coordinates positon, final Color color){
+	public FakeBlock(final Coordinates positon, final Color color)
+	{
 		this.positon = positon;
 		this.color = color;
 	}
@@ -31,7 +32,8 @@ public class FakeBlock {
 	 * Zwraca położenie bloczka
 	 * @return położenie
 	 */
-	public final Coordinates getPosition(){
+	public final Coordinates getPosition()
+	{
 		return positon;
 	}
 	
@@ -39,7 +41,8 @@ public class FakeBlock {
 	 * Zwraca kolor bloczka
 	 * @return kolor 
 	 */
-	public final Color getColor(){
+	public final Color getColor()
+	{
 		return color;
 	}
 	

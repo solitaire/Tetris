@@ -24,6 +24,7 @@ public class FakeShape
 	public FakeShape(final Set<Coordinates> shapeBlocks, final Color color)
 	{
 		blocks = new HashSet<FakeBlock>();
+		
 		for (Coordinates block : shapeBlocks) 
 		{
 			blocks.add(new FakeBlock(new Coordinates(block.getX(), (block.getY())), color));

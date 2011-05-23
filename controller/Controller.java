@@ -30,19 +30,12 @@ public class Controller implements Runnable
 	
 	/* Model gry */
 	private final Model model;
-	
 	/* Widok gry */
 	private final View view;
-	
-	
 	/* Kolejka blokująca przechowująca nadchodzące zdarzenia */
 	private final BlockingQueue<GameEvent> eventQueue;
-	
-	
 	/* Mapa wiążąca zdarzenia z akcjami */
 	private final HashMap<Class<? extends GameEvent>, GameAction> actionMap;
-	
-	
 	/* Timer */
 	private final GameTimer gameTimer;
 	
@@ -74,11 +67,13 @@ public class Controller implements Runnable
 		while(true)
 		{
 			final GameEvent event;
-			try{
+			try
+			{
 				event = eventQueue.take();
 				actionMap.get(event.getClass()).execute();
 			}
-			catch(final InterruptedException e){
+			catch(final InterruptedException e)
+			{
 				e.printStackTrace();
 			}
 		}

@@ -12,7 +12,6 @@ class Score implements Serializable,Comparable<Score>
 
 		/** Nazwa gracza */
 		private final String playerName;
-		
 		/** Wynik */
 		private final int score;
 		
