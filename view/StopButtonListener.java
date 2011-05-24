@@ -20,7 +20,14 @@ public class StopButtonListener implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		blockingQueue.add(new StopButtonPressedEvent());
+		try 
+		{
+			blockingQueue.put(new StopButtonPressedEvent());
+		} 
+		catch (InterruptedException e1) 
+		{
+			e1.printStackTrace();
+		}
 	}
 
 }

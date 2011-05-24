@@ -20,7 +20,14 @@ class StartButtonListener implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
-		eventQueue.add(new StartButtonPressedEvent());
+		try 
+		{
+			eventQueue.put(new StartButtonPressedEvent());
+		} 
+		catch (InterruptedException e) 
+		{
+			e.printStackTrace();
+		}
 	}
 
 }

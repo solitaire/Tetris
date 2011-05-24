@@ -47,46 +47,58 @@ public class GameFrame extends JFrame
 		JMenuItem aboutItem = new JMenuItem("O programie");
 		
 		
-		newGameItem.addActionListener(new ActionListener() {
+		newGameItem.addActionListener(new ActionListener() 
+		{
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
 					eventQueue.put(new StartButtonPressedEvent());
-				} catch (InterruptedException ex) {
-					
+				} 
+				catch (InterruptedException ex) 
+				{
 					ex.printStackTrace();
 				}
 			}
 		});
 		
-		scoreItem.addActionListener(new ActionListener() {
+		scoreItem.addActionListener(new ActionListener() 
+		{
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
 					eventQueue.put(new DisplayHighScoreEvent());
-				} catch (InterruptedException e1) {
-					// TODO Auto-generated catch block
+				} 
+				catch (InterruptedException e1) 
+				{
 					e1.printStackTrace();
 				}
 			}
 		});
 		
 		
-		exitItem.addActionListener(new ActionListener() {
+		exitItem.addActionListener(new ActionListener() 
+		{
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
 				System.exit(0);
 			}
 		});
 		
 		
-		aboutItem.addActionListener(new ActionListener() {
+		aboutItem.addActionListener(new ActionListener() 
+		{
 			
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) 
+			{
 				final String about = "Implementacja gry Tetris.\n" +
 						"Autor: Anna Stępień, 2011";
 				JOptionPane.showMessageDialog(null, about);

@@ -12,16 +12,12 @@ class ControlPanel extends JPanel
 {
 	
 	private static final long serialVersionUID = -3989166362272912621L;
-
 	/* Przycisk rozpoczynający nową grę */
 	private JButton startButton;
-	
 	/* Przycisk kończący grę */
 	private JButton stopButton;
-	
 	/* Przycisk pauzujący/wznawiający grę */
 	private JButton pauseButton;
-	
 	/* Kolejka blokująca przechowująca zdarzenia gry */
 	private BlockingQueue<GameEvent> eventQueue;
 	
@@ -59,10 +55,12 @@ class ControlPanel extends JPanel
 	 */
 	public void handleStart()
 	{
-		SwingUtilities.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() 
+		{
 			
 			@Override
-			public void run() {
+			public void run() 
+			{
 				stopButton.setEnabled(true);
 				pauseButton.setEnabled(true);
 			}

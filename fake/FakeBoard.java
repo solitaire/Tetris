@@ -17,7 +17,7 @@ public class FakeBoard
 	 * Tworzy nowy obiekt planszy
 	 * @param fakeRows lista wierszy składających się na planszę
 	 */
-	public FakeBoard(ArrayList<ArrayList<FakeBlock>> fakeRows)
+	public FakeBoard(final ArrayList<ArrayList<FakeBlock>> fakeRows)
 	{
 		board = fakeRows;
 	}

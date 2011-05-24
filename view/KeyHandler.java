@@ -43,20 +43,37 @@ class KeyHandler
 	
 	private void createActionMap()
 	{
-	    component.getActionMap().put("space", new AbstractAction() {
+	    component.getActionMap().put("space", new AbstractAction() 
+	    {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				eventQueue.add(new SpacePressedEvent());
+				try 
+				{
+					eventQueue.put(new SpacePressedEvent());
+				} 
+				catch (InterruptedException e1) 
+				{
+					e1.printStackTrace();
+				}
 				
 			}
 		});
 	    
-		component.getActionMap().put("keyup", new AbstractAction() {
+		component.getActionMap().put("keyup", new AbstractAction() 
+		{
 			
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				eventQueue.add(new KeyUpPressedEvent());
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				try 
+				{
+					eventQueue.put(new KeyUpPressedEvent());
+				}
+				catch (InterruptedException e) 
+				{
+					e.printStackTrace();
+				}
 				
 			}
 		});
@@ -64,30 +81,52 @@ class KeyHandler
 	    component.getActionMap().put("keyright", new AbstractAction() {
 			
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				eventQueue.add(new KeyRightPressedEvent());
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				try 
+				{
+					eventQueue.put(new KeyRightPressedEvent());
+				} 
+				catch (InterruptedException e) 
+				{
+					
+					e.printStackTrace();
+				}
 				
 			}
 		});
 	    
-	    component.getActionMap().put("keydown", new AbstractAction() {
-			
-			private static final long serialVersionUID = 1L;
+	    component.getActionMap().put("keydown", new AbstractAction() 
+	    {
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				eventQueue.add(new KeyDownPressedEvent());
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				try 
+				{
+					eventQueue.put(new KeyDownPressedEvent());
+				}
+				catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				
 			}
 		});
 	    
-	    component.getActionMap().put("keyleft", new AbstractAction() {
-			
-			private static final long serialVersionUID = 1L;
+	    component.getActionMap().put("keyleft", new AbstractAction() 
+	    {
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				eventQueue.add(new KeyLeftPressedEvent());
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				try 
+				{
+					eventQueue.put(new KeyLeftPressedEvent());
+				} 
+				catch (InterruptedException e) 
+				{
+					e.printStackTrace();
+				}
 				
 			}
 		});

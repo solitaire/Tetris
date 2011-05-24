@@ -17,10 +17,8 @@ class InfoPanel extends JPanel
 
 	/** Liczba zdobytych punktów */
 	private final JLabel score;
-	
 	/** Poziom gry */
 	private final JLabel level;
-	
 	/** Liczba usuniętych wierszy */
 	private final JLabel removedRows;
 	

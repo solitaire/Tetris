@@ -7,16 +7,27 @@ import java.util.concurrent.BlockingQueue;
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.PauseButtonPressedEvent;
 
-class PauseButtonListener implements ActionListener {
+class PauseButtonListener implements ActionListener 
+{
 	
 	private final BlockingQueue<GameEvent> eventQueue;
 
-	public PauseButtonListener(BlockingQueue<GameEvent> queue){
+	public PauseButtonListener(BlockingQueue<GameEvent> queue)
+	{
 		eventQueue = queue;
 	}
+	
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		eventQueue.add(new PauseButtonPressedEvent());
+	public void actionPerformed(ActionEvent e) 
+	{
+		try 
+		{
+			eventQueue.put(new PauseButtonPressedEvent());
+		} 
+		catch (InterruptedException e1) 
+		{
+			e1.printStackTrace();
+		}
 	}
 
 }
