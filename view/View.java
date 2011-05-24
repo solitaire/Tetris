@@ -21,23 +21,21 @@ import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
 public class View 
 {
 	
-	/* Kolejka blokujaca */
+	/** Kolejka blokujaca */
 	private BlockingQueue<GameEvent> eventQueue;
-	
-	/* Glowne okienko aplikacji */
+	/** Glowne okienko aplikacji */
 	private GameFrame gameFrame;
-	
-	/* Panel zawierajacy plansze */
+	/** Panel zawierajacy plansze */
 	private BoardPanel boardPanel;
-	
+	/** Panel z przyciskami */
 	private ControlPanel controlPanel;
-	
+	/** Panel z informacją o punktacji */
 	private InfoPanel infoPanel;
-
+	/** Panel z podglądem na następny klocek */
 	private PreviewPanel previewPanel;
-	
+	/** Container na z panelami */
 	private Container rightContainer;
-	
+	/** Okienko z punktacją */
 	private ScoreDialog highScoreDialog;
 
 	/**
@@ -74,7 +72,8 @@ public class View
 	 */
 	public void display()
 	{
-		SwingUtilities.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() 
+		{
 			
 			@Override
 			public void run() 
@@ -90,7 +89,8 @@ public class View
 	 */
 	public void updateBoard(final FakeBoard board)
 	{
-		SwingUtilities.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() 
+		{
 			
 			@Override
 			public void run() 
@@ -105,7 +105,8 @@ public class View
 	 */
 	public void clearBoard()
 	{
-		SwingUtilities.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() 
+		{
 			
 			@Override
 			public void run() 
@@ -121,7 +122,8 @@ public class View
 	 */
 	public void updatePreviewBoard(final FakeShape shape)
 	{
-		SwingUtilities.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() 
+		{
 			
 			@Override
 			public void run() 
@@ -137,7 +139,8 @@ public class View
 	 */
 	public void updateScore(final FakeScore score)
 	{
-		SwingUtilities.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() 
+		{
 			
 			@Override
 			public void run() 
@@ -148,13 +151,31 @@ public class View
 			}
 		});
 	}
+	
+	/**
+	 * Wyświetla okienko z punktacją
+	 * @param fakeHighScore
+	 */
+	public void showHighScoreDialog(final FakeHighScore fakeHighScore)
+	{
+		SwingUtilities.invokeLater(new Runnable() 
+		{
+			
+			@Override
+			public void run() {
+				highScoreDialog.display(fakeHighScore);
+			}
+		});
+
+	}
 
 	/**
 	 * Odblokowuje przyciski sterowania
 	 */
 	public void enableButtons() 
 	{
-		SwingUtilities.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() 
+		{
 			
 			@Override
 			public void run() 
@@ -169,28 +190,13 @@ public class View
 	 */
 	public void showGameOverDialog() 
 	{
-		SwingUtilities.invokeLater(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() 
+		{
 			
 			@Override
 			public void run() {
 				JOptionPane.showMessageDialog(gameFrame,"Koniec gry!", "Tetris", JOptionPane.PLAIN_MESSAGE);	
 			}
 		});
-	}
-	
-	/**
-	 * Wyświetla okienko z punktacją
-	 * @param fakeHighScore
-	 */
-	public void showHighScoreDialog(final FakeHighScore fakeHighScore)
-	{
-		SwingUtilities.invokeLater(new Runnable() {
-			
-			@Override
-			public void run() {
-				highScoreDialog.display(fakeHighScore);
-			}
-		});
-
 	}
 }
