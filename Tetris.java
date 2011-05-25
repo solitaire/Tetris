@@ -11,14 +11,17 @@ import pl.edu.pw.elka.www.proz.tetris.view.View;
 
 /**
  * Implementacja gry Tetris
- *
+ * 
+ * @author Anna Stępień
+ * 
  */
 public class Tetris 
 {
 
 	/**
-	 * Tworzy nowy obiekt gry tetris
-	 * @param args
+	 * Uruchamia grę.
+	 * 
+	 * @param args nie używane
 	 */
 	public static void main(String[] args)
 	{
@@ -28,10 +31,9 @@ public class Tetris
 		final Model model = new Model();
 		final Controller controller = new Controller(model, view, eventQueue);
 		
-		Thread controllerThread = new Thread(controller);
-		controllerThread.start();
-		
 		view.display();
+		
+		controller.start();
 
 	}
 }

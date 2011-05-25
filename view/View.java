@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
+import pl.edu.pw.elka.www.proz.tetris.events.NewHighScoreEvent;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeBoard;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeHighScore;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeScore;
@@ -16,7 +17,8 @@ import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
 
 /**
  * Widok gry
- *
+ * 
+ *@author Anna Stępień
  */
 public class View 
 {
@@ -40,6 +42,7 @@ public class View
 
 	/**
 	 * Tworzy nowy obiekt widoku
+	 * 
 	 * @param queue Kolejka blokujaca 
 	 */
 	public View(BlockingQueue<GameEvent> queue)
@@ -69,6 +72,7 @@ public class View
 	
 	/**
 	 * Wyswietla główne okno aplikacji
+	 * 
 	 */
 	public void display()
 	{
@@ -85,6 +89,7 @@ public class View
 
 	/**
 	 * Aktualizuje planszę
+	 * 
 	 * @param board Plansza gry
 	 */
 	public void updateBoard(final FakeBoard board)
@@ -102,6 +107,7 @@ public class View
 	
 	/**
 	 * Czyści planszę
+	 * 
 	 */
 	public void clearBoard()
 	{
@@ -118,6 +124,7 @@ public class View
 	
 	/**
 	 * Aktualizuje podgląd na następny klocek
+	 * 
 	 * @param shape Nastepny klocek
 	 */
 	public void updatePreviewBoard(final FakeShape shape)
@@ -135,6 +142,7 @@ public class View
 	
 	/**
 	 * Aktualizuje punktację
+	 * 
 	 * @param score Informacja o punktach
 	 */
 	public void updateScore(final FakeScore score)
@@ -154,6 +162,7 @@ public class View
 	
 	/**
 	 * Wyświetla okienko z punktacją
+	 * 
 	 * @param fakeHighScore
 	 */
 	public void showHighScoreDialog(final FakeHighScore fakeHighScore)
@@ -171,6 +180,7 @@ public class View
 
 	/**
 	 * Odblokowuje przyciski sterowania
+	 * 
 	 */
 	public void enableButtons() 
 	{
@@ -187,6 +197,7 @@ public class View
 
 	/**
 	 * Wyświetla okienko z informacją o końcu gry
+	 * 
 	 */
 	public void showGameOverDialog() 
 	{
@@ -194,9 +205,37 @@ public class View
 		{
 			
 			@Override
-			public void run() {
+			public void run() 
+			{
 				JOptionPane.showMessageDialog(gameFrame,"Koniec gry!", "Tetris", JOptionPane.PLAIN_MESSAGE);	
 			}
 		});
+	}
+
+	/** 
+	 * Wyświetla okienko z prośbą o podanie imienia i rejestruje zdarzenie
+	 * 
+	 */
+	public void displayRegisterHighScoreDialog(final FakeScore score) {
+		
+		SwingUtilities.invokeLater(new Runnable() 
+		{
+			
+			@Override
+			public void run() {
+				String name = JOptionPane.showInputDialog(null, "Najlepsze wyniki", "Podaj imię",
+						JOptionPane.INFORMATION_MESSAGE);
+				try 
+				{
+					eventQueue.put(new NewHighScoreEvent(name, score.getScore()));
+				} 
+				catch (InterruptedException e) 
+				{
+					
+					e.printStackTrace();
+				}
+			}
+		});
+		
 	}
 }

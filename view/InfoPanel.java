@@ -8,12 +8,13 @@ import pl.edu.pw.elka.www.proz.tetris.fake.FakeScore;
 
 /**
  * Panel wyświetlający informacje o stanie gry
- *
+ * 
+ * @author Anna Stępień
  */
 class InfoPanel extends JPanel 
 {
 	
-	private static final long serialVersionUID = -6581047491363585470L;
+	private static final long serialVersionUID = 1L;
 
 	/** Liczba zdobytych punktów */
 	private final JLabel score;

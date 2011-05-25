@@ -2,12 +2,19 @@ package pl.edu.pw.elka.www.proz.tetris.fake;
 
 import javax.swing.table.AbstractTableModel;
 
+/**
+ * Tworzy model z najlepszymi wynikami dla widoku
+ * @author Anna Stępień
+ *
+ */
 public class FakeHighScore extends AbstractTableModel 
 {
 
-	private static final long serialVersionUID = 8160499615037479142L;
+	private static final long serialVersionUID = 1L;
 	
+	/** Nazwy kolumn */
 	private String [] columnNames = {"Nazwa Gracza", "Liczba punktów"};
+	/** Dane z najlepszymi wynikami */
 	private Object [][] highScores;
 	
 	public FakeHighScore(Object highScores[][])

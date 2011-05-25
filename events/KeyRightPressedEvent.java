@@ -3,7 +3,8 @@ package pl.edu.pw.elka.www.proz.tetris.events;
 
 /**
  * Zdarzenie polegające na wciśnięciu klawisza w prawo
- *
+ * 
+ * @author Anna Stępień
  */
 public class KeyRightPressedEvent extends GameEvent 
 {

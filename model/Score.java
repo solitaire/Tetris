@@ -4,11 +4,13 @@ import java.io.Serializable;
 /**
  * Klasa reprezentująca wynik gracza
  * Przechowuje informacje o nazwie gracza i jego zdobytych punktach
+ * 
+ * @author Anna Stępień
  */
 class Score implements Serializable,Comparable<Score>
 	{
 		
-		private static final long serialVersionUID = 1516775930703472045L;
+		private static final long serialVersionUID = 1L;
 
 		/** Nazwa gracza */
 		private final String playerName;
@@ -17,6 +19,7 @@ class Score implements Serializable,Comparable<Score>
 		
 		/**
 		 * Tworzy nowy obiekt wyniku gracza
+		 * 
 		 * @param playerName Nazwa gracza
 		 * @param score Wynik gry
 		 */
@@ -29,6 +32,7 @@ class Score implements Serializable,Comparable<Score>
 		
 		/**
 		 * Zwraca wynik gracza (liczbę punktów)
+		 * 
 		 * @return wynik gracza
 		 */
 		public final int getScore()
@@ -38,6 +42,7 @@ class Score implements Serializable,Comparable<Score>
 		
 		/**
 		 * Zwraca nazwę gracza
+		 * 
 		 * @return nazwa gracza
 		 */
 		public final String getPlayerName()

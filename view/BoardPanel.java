@@ -9,30 +9,31 @@ import java.util.concurrent.BlockingQueue;
 
 import javax.swing.JPanel;
 
+import pl.edu.pw.elka.www.proz.tetris.config.ViewConfig;
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeBlock;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeBoard;
 
 /**
  * Panel wyświetlający planszę gry
- *
+ * 
+ * @author Anna Stępień
  */
 class BoardPanel extends JPanel
 {
 	
-	private static final long serialVersionUID = -6725326326347514513L;
+	private static final long serialVersionUID = 1L;
 
 	/* Kolejka blokująca przechowująca zdarzenia gry */
 	private BlockingQueue<GameEvent> eventQueue;
-	
 	/* Obłsuga klawiatury */
 	private KeyHandler keyHandler;
-	
 	/* Obrazek na którym rysowana jest plansza */
 	private Image grid;
 	
 	/**
 	 * Tworzy nowy panel planszy
+	 * 
 	 * @param queue Kolejka zdarzeń gry
 	 */
 	public BoardPanel(BlockingQueue<GameEvent> queue)
@@ -41,7 +42,7 @@ class BoardPanel extends JPanel
 		eventQueue = queue;
 		keyHandler = new KeyHandler(this, eventQueue);
 		setBackground(Color.WHITE);
-		setPreferredSize(new Dimension(375, 675));
+		setPreferredSize(new Dimension(ViewConfig.BOARD_WIDTH, ViewConfig.BOARD_HEIGHT));
 		
 	}
 	
@@ -57,13 +58,14 @@ class BoardPanel extends JPanel
 	
 	/**
 	 * Rysuje planszę gry wraz z siatką
-	 * @param board
+	 * 
+	 * @param board Plansza gry
 	 */
 	public void updateBoard(FakeBoard board)
 	{
 		
 		Graphics g;
-		grid = createImage(365, 665);
+		grid = createImage(ViewConfig.BOARD_WIDTH - 10, ViewConfig.FRAME_HEIGHT - 10);
 		g = grid.getGraphics();
 		try{
 			for (ArrayList<FakeBlock> row : board.getRows()) 
@@ -87,6 +89,7 @@ class BoardPanel extends JPanel
 	
 	/**
 	 * Przywraca poczatkowy wygląd planszy
+	 * 
 	 */
 	public void clear()
 	{
@@ -98,8 +101,9 @@ class BoardPanel extends JPanel
 	
 	/**
 	 * Rysuje pojedynczy kolorowy blok na planszy
-	 * @param g
-	 * @param block
+	 * 
+	 * @param g obiekt Graphics
+	 * @param block blok planszy
 	 */
 	private void paintBlock(Graphics g, FakeBlock block)
 	{

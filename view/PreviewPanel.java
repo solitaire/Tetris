@@ -12,12 +12,13 @@ import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
 
 /**
  * Panel wyświetlający podgląd na następny klocek
- *
+ * 
+ * @author Anna Stępień
  */
 class PreviewPanel extends JPanel 
 {
 	
-	private static final long serialVersionUID = -681786707529383734L;
+	private static final long serialVersionUID = 1L;
 	private Image preview;
 	
 	

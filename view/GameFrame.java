@@ -10,6 +10,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import pl.edu.pw.elka.www.proz.tetris.config.ViewConfig;
 import pl.edu.pw.elka.www.proz.tetris.events.DisplayHighScoreEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.StartButtonPressedEvent;
@@ -17,21 +18,25 @@ import pl.edu.pw.elka.www.proz.tetris.events.StartButtonPressedEvent;
 
 /**
  * Glowne okno aplikacji
- *
+ * 
+ * @author Anna Stępień
  */
 public class GameFrame extends JFrame
 {
 	
-
-	private static final long serialVersionUID = 6612287178378405109L;
+	private static final long serialVersionUID = 1L;
 	/** Menu */
 	private final JMenuBar menuBar;
 	/** Kolejka zdarzeń */
 	private BlockingQueue<GameEvent> eventQueue;
 	
+	/**
+	 * Tworzy nowe okno aplikacji
+	 * @param queue kolejka zdarzeń
+	 */
 	public GameFrame(BlockingQueue<GameEvent> queue)
 	{
-		setSize(640, 850);
+		setSize(ViewConfig.FRAME_WIDTH, ViewConfig.FRAME_HEIGHT);
 		setResizable(false);
 		setTitle("Tetris");
 		eventQueue = queue;

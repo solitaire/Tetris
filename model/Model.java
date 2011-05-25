@@ -1,5 +1,6 @@
 package pl.edu.pw.elka.www.proz.tetris.model;
 
+import pl.edu.pw.elka.www.proz.tetris.config.TetrisConfig;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeBoard;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeHighScore;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeScore;
@@ -8,17 +9,11 @@ import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
 /**
  * Model gry
  * 
+ * @author Anna Stępień
+ * 
  */
-public class Model {
-	
-	/** Bonusowe punkty za usunięty wiersz */
-	private final static int REMOVED_ROWS_BONUS  = 15;
-	/** Bonusowe punkty za opuszczenie klocka na dno planszy */
-	private final static int INSTANT_DROP_BONUS = 10;
-	/** Bonusowe punkty za przyspieszenie opadania */
-	private final static int FALL_BONUS = 5;
-	/** Maksymalna liczba najlepszych wyników */
-	private final static int MAX_HIGHSCORES = 10;
+public class Model 
+{
 	
 	/** Bieżący klocek poruszający się po planszy */
 	private Shape currentShape;
@@ -39,6 +34,7 @@ public class Model {
 	
 	/**
 	 * Tworzy nowy obiekt modelu
+	 * 
 	 */
 	public Model()
 	{
@@ -52,6 +48,7 @@ public class Model {
 	
 	/*
 	 * Rozpoczyna grę
+	 * 
 	 */
 	public void startGame()
 	{
@@ -65,6 +62,7 @@ public class Model {
 	
 	/**
 	 * Wstrzymuje grę
+	 * 
 	 */
 	public void pauseGame()
 	{
@@ -73,6 +71,7 @@ public class Model {
 	
 	/**
 	 * Wznawia grę
+	 * 
 	 */
 	public void resumeGame()
 	{
@@ -84,16 +83,20 @@ public class Model {
 	
 	/**
 	 * Kończy grę
+	 * 
 	 */
 	public void endGame()
 	{
 		state = GameState.ENDED;
 		nextShape = null;
 		score = 0;
+		level = 1;
+		board.clear();
 	}
 	
 	/**
 	 * Sprawdza czy gra jest aktywna
+	 * 
 	 * @return true jeśli na planszy jest aktywny klocek, false w przeciwnym wypadku
 	 */
 	public boolean isGameRunning()
@@ -103,6 +106,7 @@ public class Model {
 	
 	/**
 	 * Sprawdza czy gra jest wstrzymana
+	 * 
 	 * @return true jeśli gra jest wstrzymana, false w przeciwnym wypadku
 	 */
 	public boolean isGamePaused()
@@ -112,6 +116,7 @@ public class Model {
 	
 	/**
 	 * Sprawdza czy gra została zakończona
+	 * 
 	 * @return true, jeśli gra jest zakończona,false w przeciwnym przypadku
 	 */
 	public boolean isGameEnded()
@@ -121,13 +126,20 @@ public class Model {
 	
 	/**
 	 * Sprawdza czy uzyskany wynik należy do 10 najlepszych
+	 * 
 	 * @return true, jeśli uzyskany wynik należy do 10 najlepszych, false w przeciwnym przypadku
 	 */
 	public boolean isHighScore()
 	{
 		int highScoreSize = highScore.getScores().size();
-		int lastMax = highScore.getScores().get(highScoreSize -1).getScore();
-		if ( highScoreSize < MAX_HIGHSCORES || score >= lastMax)
+		int lastMax;
+		
+		if (highScoreSize > 0)
+			lastMax = highScore.getScores().get(highScoreSize -1).getScore();
+		else 
+			lastMax = 0;
+		
+		if (score > lastMax || highScoreSize < TetrisConfig.MAX_HIGHSCORES)
 		{
 			return true;
 		}
@@ -136,6 +148,7 @@ public class Model {
 	
 	/**
 	 * Umieszcza nowy klocek na planszy
+	 * 
 	 */
 	public void addNewShape()
 	{
@@ -146,6 +159,7 @@ public class Model {
 	
 	/**
 	 * Przesuwa klocek o jedno pole w prawo
+	 * 
 	 */
 	public void moveCurrentShapeRight()
 	{
@@ -154,6 +168,7 @@ public class Model {
 	
 	/**
 	 * Przesuwa klocek o jedno pole w lewo
+	 * 
 	 */
 	public void moveCurrentShapeLeft()
 	{
@@ -162,6 +177,7 @@ public class Model {
 	
 	/**
 	 * Przesuwa klocek o jedno pole w dół
+	 * 
 	 */
 	public void moveCurrentShapeDown()
 	{
@@ -170,6 +186,7 @@ public class Model {
 	
 	/**
 	 * Opuszcza klocek na dno planszy
+	 * 
 	 */
 	public void dropCurrentShapeDown()
 	{
@@ -181,7 +198,8 @@ public class Model {
 	}
 	
 	/**
-	 * Obraca klocek o 90 stopni przeciwnie do ruchu wskazówek zegara
+	 * Obraca zgodnie z przyjętą strategią
+	 * 
 	 */
 	public void rotateCurrentShape()
 	{
@@ -190,16 +208,18 @@ public class Model {
 	
 	/**
 	 * Sprawdza czy na planszy można umieścić nowy klocek
+	 * 
 	 * @return true jeśli na planszy można umieścić nowy klocek, false w przeciwnym wypadku
 	 */
 	public boolean canAddNewShape()
 	{
-		return nextShape.collide(board, new Coordinates(6, 20));
+		return nextShape.collide(board, new Coordinates(TetrisConfig.BOARD_X_CENTER, TetrisConfig.BOARD_Y_CENTER));
 	}
 	
 
 	/**
 	 * Sprawdza czy aktywny klocek może wykonać ruch
+	 * 
 	 * @param vector
 	 * @return true jeśli aktywny klocek może się przemieścic o vector
 	 */
@@ -213,6 +233,7 @@ public class Model {
 	
 	/**
 	 * Sprawdza czy aktywny klocek może wykonać obrót
+	 * 
 	 * @return true jeśli klocek może się obrócić, false w przeciwnym wypadku
 	 */
 	public boolean canRotate()
@@ -223,6 +244,7 @@ public class Model {
 	
 	/**
 	 * Usuwa pełne wiersze z planszy
+	 * 
 	 */
 	public int removeFullRows() 
 	{
@@ -231,6 +253,7 @@ public class Model {
 	
 	/**
 	 * Zwraca obiekt przeznaczony dla widoku reprezentujący następny klocek 
+	 * 
 	 * @return następny klocek
 	 */
 	public final FakeShape getNextShape()
@@ -247,6 +270,7 @@ public class Model {
 	
 	/**
 	 * Zwraca obiekt przeznaczony dla widoku reprezentujący planszę
+	 * 
 	 * @return plansza gry
 	 */
 	public final FakeBoard getBoard()
@@ -263,6 +287,7 @@ public class Model {
 	
 	/**
 	 * Zwraca obiekt przeznaczony dla widoku informujący o poziomie, wyniku i liczbie usuniętych wierszy
+	 * 
 	 * @return informacja o punktacji
 	 */
 	public final FakeScore getScore()
@@ -272,6 +297,7 @@ public class Model {
 	
 	/**
 	 * Zwraca aktualną szybkość gry
+	 * 
 	 * @return Szybkość gry 
 	 */
 	public int getGameSpeed() 
@@ -281,6 +307,7 @@ public class Model {
 	
 	/**
 	 * Zwraca poziom gry (1 do 10)
+	 * 
 	 * @return Aktualny poziom gry
 	 */
 	public int getLevel()
@@ -296,44 +323,58 @@ public class Model {
 	
 	/**
 	 * Dodaje punkty za swobodny spadek
+	 * 
 	 */
 	public void addFallPoints()
 	{
-		score += getLevel()*FALL_BONUS;
+		score += getLevel()*TetrisConfig.FALL_BONUS;
 	}
 	
 	/**
 	 * Dodaje punkty za opuszczenie klocka
+	 * 
 	 */
 	public void addDropPoints()
 	{
-		score += getLevel()*INSTANT_DROP_BONUS;
+		score += getLevel()*TetrisConfig.INSTANT_DROP_BONUS;
 	}
 	
 	/**
 	 * Dodaje pukty za usunięte wiersze
+	 * 
 	 * @param num liczba usuniętych wierszy
 	 */
 	public void addRemovedRowPoints(final int num)
 	{
-		score += getLevel()*num*REMOVED_ROWS_BONUS;
+		score += getLevel()*num*TetrisConfig.REMOVED_ROWS_BONUS;
 	}
 	
 	
 	/**
 	 * Zapisuje wynik gry do pliku
+	 * 
 	 * @param playerName Nazwa gracza
 	 * @param score Wynik gracza
 	 */
-	public void recordScore(String playerName)
+	public void recordScore(String playerName, int playerScore)
 	{
 		if (playerName != null)
 		{
-			highScore.addScore(playerName, score);
+			if (highScore.getScores().size() < TetrisConfig.MAX_HIGHSCORES)
+				highScore.addScore(playerName, playerScore);
+			else
+			{
+				highScore.getScores().set(TetrisConfig.MAX_HIGHSCORES - 1, new Score(playerName, playerScore));
+			}
 			highScore.save();
 		}
 	}
 	
+	/**
+	 * Zwraca najlepsze wyniki
+	 * 
+	 * @return najlepsze wyniki
+	 */
 	public FakeHighScore getFakeHighScore()
 	{
 		Object[][] data = new Object[highScore.getScores().size()][2];

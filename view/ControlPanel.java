@@ -8,10 +8,16 @@ import javax.swing.SwingUtilities;
 
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
 
+/**
+ * Panel sterujący 
+ * 
+ * @author Anna Stępień
+ *
+ */
 class ControlPanel extends JPanel 
 {
 	
-	private static final long serialVersionUID = -3989166362272912621L;
+	private static final long serialVersionUID = 1L;
 	/* Przycisk rozpoczynający nową grę */
 	private JButton startButton;
 	/* Przycisk kończący grę */
@@ -23,6 +29,7 @@ class ControlPanel extends JPanel
 	
 	/**
 	 * Tworzy nowy panel kontrolny
+	 * 
 	 * @param queue kolejka blokująca
 	 */
 	public ControlPanel(BlockingQueue<GameEvent> queue)
@@ -52,6 +59,7 @@ class ControlPanel extends JPanel
 	
 	/**
 	 * Odblokowuje przyciski odpowiedzialne za pauzę i koniec gry
+	 * 
 	 */
 	public void handleStart()
 	{

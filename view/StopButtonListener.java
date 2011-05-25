@@ -7,6 +7,12 @@ import java.util.concurrent.BlockingQueue;
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.StopButtonPressedEvent;
 
+/**
+ * Listener przycisku stop
+ * 
+ * @author Anna Stępień
+ *
+ */
 public class StopButtonListener implements ActionListener 
 {
 	

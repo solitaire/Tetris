@@ -14,6 +14,8 @@ import pl.edu.pw.elka.www.proz.tetris.events.TimerTickEvent;
  * Udostępnia jedynie trzy metody: start, stop i setDelay
  * Po upłynięciu określonego czasu
  * do kolejki blokującej dodawane jest zdarzenie TimerTickEvent
+ * 
+ * @author Anna Stępień
  *
  */
 class GameTimer 
@@ -27,6 +29,7 @@ class GameTimer
 	
 	/**
 	 * Tworzy nowy obiekt timera
+	 * 
 	 * @param delay początkowe opóźnienie timera (w milisekundach)
 	 * @param queue kolejka blokująca
 	 */
@@ -54,6 +57,7 @@ class GameTimer
 	
 	/**
 	 * Uruchamia timer
+	 * 
 	 */
 	public void start()
 	{
@@ -62,14 +66,17 @@ class GameTimer
 	
 	/**
 	 * Zatrzymuje timer
+	 * 
 	 */
 	public void stop()
 	{
 		timer.stop();
 	}
 	
+	
 	/**
 	 * Ustawia nowe opóźnienie timera
+	 * 
 	 * @param delay opóźnienie w milisekundach
 	 */
 	public void setDelay(int delay)

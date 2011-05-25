@@ -7,6 +7,12 @@ import java.util.concurrent.BlockingQueue;
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.StartButtonPressedEvent;
 
+/**
+ * Listener przycisku start 
+ * 
+ * @author Anna Stępień
+ *
+ */
 class StartButtonListener implements ActionListener 
 {
 	

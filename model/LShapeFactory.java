@@ -1,9 +1,16 @@
 package pl.edu.pw.elka.www.proz.tetris.model;
 
-import java.awt.Color;
 import java.util.HashSet;
 import java.util.Set;
 
+import pl.edu.pw.elka.www.proz.tetris.config.ShapeConfig;
+
+/**
+ * Fabryka klocka typu LShape
+ * 
+ * @author Anna Stępień
+ *
+ */
 class LShapeFactory implements Factory
 {
 
@@ -17,7 +24,7 @@ class LShapeFactory implements Factory
 		blocks.add(new Coordinates(0, 0));
 		blocks.add(new Coordinates(1, 0));
 		
-		return new Shape(blocks, Color.MAGENTA, new CounterClockwiseRotationStrategy());
+		return new Shape(blocks, ShapeConfig.LSHAPE_COLOR, new CounterClockwiseRotationStrategy());
 	}
 
 }

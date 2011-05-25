@@ -4,13 +4,16 @@ import java.util.Random;
 
 /**
  * Tworzy losowy obiekt klocka
- *
+ * 
+ * @author Anna Stępień
+ * 
  */
 class RandomShapeFactory 
 {
 	
 	enum ShapeTypes
 	{
+		/** Klocek typu IShape */
 		I_SHAPE
 		{
 			Factory getFactory() 
@@ -19,6 +22,7 @@ class RandomShapeFactory
 			}
 		},
 		
+		/** Klocek typu OShape */
 		O_SHAPE
 		{ 
 			Factory getFactory() 
@@ -27,6 +31,7 @@ class RandomShapeFactory
 			}
 		},
 		
+		/** Klocek typu TShape */
 		T_SHAPE
 		{ 
 			Factory getFactory() 
@@ -35,6 +40,7 @@ class RandomShapeFactory
 			}
 		},
 		
+		/** Klocek typu ZShape */
 		Z_SHAPE
 		{ 
 			Factory getFactory() 
@@ -43,6 +49,7 @@ class RandomShapeFactory
 			}
 		},
 		
+		/** Klocek typu SShape */
 		S_SHAPE
 		{ 
 			Factory getFactory() 
@@ -51,6 +58,7 @@ class RandomShapeFactory
 			}
 		},
 		
+		/** Klocek typu JShape */
 		J_SHAPE
 		{ 
 			Factory getFactory() 
@@ -59,6 +67,7 @@ class RandomShapeFactory
 			}
 		},
 		
+		/** Klocek typu LShape */
 		L_SHAPE
 		{ 
 			Factory getFactory() 
@@ -72,6 +81,7 @@ class RandomShapeFactory
 	
 	/**
 	 * Zwraca losowy obiekt klocka
+	 * 
 	 * @return losowy obiekt klocka
 	 */
 	public Shape getRandomShape()

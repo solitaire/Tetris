@@ -1,5 +1,6 @@
 package pl.edu.pw.elka.www.proz.tetris.model;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -9,20 +10,23 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import pl.edu.pw.elka.www.proz.tetris.config.TetrisConfig;
+
 /**
  * Klasa reprezentuje najlepsze wyniki osiągnięte przez graczy
  * Na wynik składa się nazwa gracza i jego liczba punktów
+ * 
+ * @author Anna Stępień
  */
 class HighScore 
 {
-	/**Plik z danymi */
-	private static final String HIGHSCORE_FILE = "score.txt";
 	/**Lista z najlepszymi wynikami graczy */
 	private ArrayList<Score> highScores;
 	
 	
 	/**
 	 * Tworzy nowy obiekt 
+	 * 
 	 */
 	public HighScore()
 	{
@@ -32,6 +36,7 @@ class HighScore
 	
 	/**
 	 * Dodaje wynik gracza do listy najlepszych wyników
+	 * 
 	 * @param playerName nazwa gracza
 	 * @param score wynik
 	 */
@@ -43,36 +48,48 @@ class HighScore
 	/**
 	 * Wczytuje i zwraca listę najlepszych wyników uporządkowanych 
 	 * od najlepszego do najsłabszego
+	 * 
 	 * @return lita najlepszych wyników
 	 */
 	public final ArrayList<Score> getScores()
 	{
+		load();
 		Collections.sort(highScores);
 		return highScores;
 	}
 	
 	/**
 	 * Wczytuje listę wyników z pliku
+	 * 
 	 */
-	public  void load()
+	public void load()
 	{
+		File file = new File(TetrisConfig.HIGHSCORE_FILE);
+		
+		if (!file.exists())
+			try {
+				file.createNewFile();
+				save();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		ObjectInputStream inputStream = null;
 		try
 		{
-			inputStream = new ObjectInputStream(new FileInputStream(HIGHSCORE_FILE));
+			inputStream = new ObjectInputStream(new FileInputStream(TetrisConfig.HIGHSCORE_FILE));
 			highScores = (ArrayList<Score>) inputStream.readObject();
 		}
 		catch(FileNotFoundException e1)
 		{
 			e1.printStackTrace();
 		}
-		catch (ClassNotFoundException e)
-		{
-			e.printStackTrace();
-		}
-		catch(IOException e2)
+		catch (ClassNotFoundException e2)
 		{
 			e2.printStackTrace();
+		}
+		catch(IOException e3)
+		{
+			e3.printStackTrace();
 		}
 		finally
 		{
@@ -90,13 +107,14 @@ class HighScore
 	
 	/**
 	 * Zapisuje listę najlepszych wyników do pliku
+	 * 
 	 */
 	public  void save()
 	{
 		ObjectOutputStream outputStream = null;
 		try
 		{
-			outputStream = new ObjectOutputStream(new FileOutputStream(HIGHSCORE_FILE));
+			outputStream = new ObjectOutputStream(new FileOutputStream(TetrisConfig.HIGHSCORE_FILE));
 			outputStream.writeObject(highScores);
 		}
 		catch(FileNotFoundException e1)

@@ -4,14 +4,13 @@ package pl.edu.pw.elka.www.proz.tetris.controller;
 import java.util.HashMap;
 import java.util.concurrent.BlockingQueue;
 
-import javax.swing.JOptionPane;
-
 import pl.edu.pw.elka.www.proz.tetris.events.DisplayHighScoreEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.KeyDownPressedEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.KeyLeftPressedEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.KeyRightPressedEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.KeyUpPressedEvent;
+import pl.edu.pw.elka.www.proz.tetris.events.NewHighScoreEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.PauseButtonPressedEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.SpacePressedEvent;
 import pl.edu.pw.elka.www.proz.tetris.events.StartButtonPressedEvent;
@@ -23,9 +22,12 @@ import pl.edu.pw.elka.www.proz.tetris.view.View;
 
 /**
  * Kontroler gry
+ * 
+ * @author Anna Stępień
+ * 
  */
 
-public class Controller implements Runnable
+public class Controller
 {
 	
 	/* Model gry */
@@ -43,6 +45,7 @@ public class Controller implements Runnable
 
 	/**
 	 * Tworzy nowy obiekt kontrolera
+	 * 
 	 * @param model
 	 * @param view
 	 * @param eventQueue
@@ -61,8 +64,9 @@ public class Controller implements Runnable
 	
 	/**
 	 * Uruchamia kontroler
+	 * 
 	 */
-	public void run()
+	public void start()
 	{
 		while(true)
 		{
@@ -70,7 +74,7 @@ public class Controller implements Runnable
 			try
 			{
 				event = eventQueue.take();
-				actionMap.get(event.getClass()).execute();
+				actionMap.get(event.getClass()).execute(event);
 			}
 			catch(final InterruptedException e)
 			{
@@ -81,6 +85,7 @@ public class Controller implements Runnable
 	
 	/**
 	 * Tworzy mapę zdarzeń i powiązanych akcji
+	 * 
 	 */
 	private void createActionMap()
 	{
@@ -94,6 +99,7 @@ public class Controller implements Runnable
 		actionMap.put(SpacePressedEvent.class, new DropDownAction());
 		actionMap.put(TimerTickEvent.class, new TimerTickAction());
 		actionMap.put(DisplayHighScoreEvent.class, new DisplayHighScoreAction());
+		actionMap.put(NewHighScoreEvent.class, new RegisterHighScoreAction());
 	}
 	
 	/**
@@ -104,7 +110,7 @@ public class Controller implements Runnable
 	{
 
 		@Override
-		public void execute() 
+		public void execute(GameEvent event) 
 		{
 			
 			if (model.isGameRunning())
@@ -124,7 +130,7 @@ public class Controller implements Runnable
 	private class MoveDownAction extends GameAction{
 
 		@Override
-		public void execute() 
+		public void execute(GameEvent event) 
 		{
 				if (model.isGameRunning())
 				{
@@ -151,7 +157,7 @@ public class Controller implements Runnable
 	{
 
 		@Override
-		public void execute() 
+		public void execute(GameEvent event) 
 		{
 			if (model.isGameRunning())
 			{
@@ -172,7 +178,7 @@ public class Controller implements Runnable
 	{
 
 		@Override
-		public void execute() 
+		public void execute(GameEvent event) 
 		{
 			if (model.isGameRunning())
 			{
@@ -193,7 +199,7 @@ public class Controller implements Runnable
 	{
 
 		@Override
-		public void execute() 
+		public void execute(GameEvent event) 
 		{
 			if (model.isGameRunning())
 			{
@@ -214,7 +220,7 @@ public class Controller implements Runnable
 	{
 
 		@Override
-		public void execute() 
+		public void execute(GameEvent event) 
 		{
 			model.startGame();
 			gameTimer.start();
@@ -234,7 +240,7 @@ public class Controller implements Runnable
 	{
 
 		@Override
-		public void execute() 
+		public void execute(GameEvent event) 
 		{
 			
 			if (model.isGamePaused())
@@ -260,7 +266,7 @@ public class Controller implements Runnable
 	{
 
 		@Override
-		public void execute() 
+		public void execute(GameEvent event) 
 		{
 			gameTimer.stop();
 			model.endGame();
@@ -279,7 +285,7 @@ public class Controller implements Runnable
 	{
 
 		@Override
-		public void execute() 
+		public void execute(GameEvent event) 
 		{
 			
 			if (model.isGameRunning())
@@ -309,10 +315,7 @@ public class Controller implements Runnable
 					{
 						if (model.isHighScore())
 						{
-							String name;
-							name = JOptionPane.showInputDialog(null, "Najlepsze wyniki", "Podaj imię",
-							        JOptionPane.INFORMATION_MESSAGE);
-							model.recordScore(name);
+							view.displayRegisterHighScoreDialog(model.getScore());
 						}
 						model.endGame();
 						view.clearBoard();
@@ -329,15 +332,36 @@ public class Controller implements Runnable
 	
 	/**
 	 * Akcja reprezentująca pobranie najlepszych wyników
+	 * 
 	 */
 	private class DisplayHighScoreAction extends GameAction
 	{
 
 		@Override
-		public void execute() 
+		public void execute(GameEvent event) 
 		{
 			view.showHighScoreDialog(model.getFakeHighScore());
 		}
 		
 	}
+	
+	/**
+	 * Akcja reprezentująca zarejestrowanie dobrego wyniku
+	 *
+	 */
+	private class RegisterHighScoreAction extends GameAction
+	{
+
+		@Override
+		public void execute(GameEvent event) 
+		{
+			NewHighScoreEvent highScoreEvent = (NewHighScoreEvent)event;
+			String playerName = highScoreEvent.getPlayerName();
+			int playerScore = highScoreEvent.getScore();
+			model.recordScore(playerName, playerScore);
+		}
+		
+	}
+	
+	
 }

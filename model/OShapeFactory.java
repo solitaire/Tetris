@@ -1,9 +1,16 @@
 package pl.edu.pw.elka.www.proz.tetris.model;
 
-import java.awt.Color;
 import java.util.HashSet;
 import java.util.Set;
 
+import pl.edu.pw.elka.www.proz.tetris.config.ShapeConfig;
+
+/**
+ * Fabryka klocka typu OShape
+ * 
+ * @author Anna Stępień
+ *
+ */
 class OShapeFactory implements Factory 
 {
 	
@@ -18,7 +25,7 @@ class OShapeFactory implements Factory
 		blocks.add(new Coordinates(-1, -1));
 		blocks.add(new Coordinates(-1, 0));
 		
-		return new Shape(blocks, Color.BLUE, new NoRotationStrategy());
+		return new Shape(blocks, ShapeConfig.OSHAPE_COLOR, new NoRotationStrategy());
 	}
 
 }

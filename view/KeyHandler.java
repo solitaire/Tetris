@@ -16,12 +16,15 @@ import pl.edu.pw.elka.www.proz.tetris.events.SpacePressedEvent;
 
 /**
  * Realizuje obsługę klawiatury
- *
+ * 
+ * @author Anna Stępień
  */
 class KeyHandler 
 {
 	
+	/** Kolejka zdarzeń */
 	private BlockingQueue<GameEvent> eventQueue;
+	/** Komponent dla którego realizowana jest obsługa klawiatury */
 	private final JComponent component;
 	
 	public KeyHandler(JComponent jComponent, BlockingQueue<GameEvent> queue)

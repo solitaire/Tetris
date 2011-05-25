@@ -7,10 +7,16 @@ import javax.swing.JTable;
 
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeHighScore;
 
+/**
+ * Okienko wyświetlające najlepsze wyniki
+ * 
+ * @author Anna Stępień
+ *
+ */
 class ScoreDialog extends JDialog
 {
 	
-	private static final long serialVersionUID = 2282191363055377316L;
+	private static final long serialVersionUID = 1L;
 
 	public ScoreDialog(JFrame parent)
 	{

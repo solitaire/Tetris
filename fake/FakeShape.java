@@ -8,7 +8,8 @@ import pl.edu.pw.elka.www.proz.tetris.model.Coordinates;
 
 /**
  * Klasa reprezentująca klocek
- *
+ * 
+ * @author Anna Stępień
  */
 public class FakeShape 
 {
@@ -18,6 +19,7 @@ public class FakeShape
 	
 	/**
 	 * Tworzy nowy obiekt klocka przeznaczony dla widoku
+	 * 
 	 * @param shapeBlocks Zbiór współrzędnych z jakich składa się klocek
 	 * @param color kolor klocka
 	 */
@@ -34,6 +36,7 @@ public class FakeShape
 	
 	/**
 	 * Zwraca zbiór bloczków z których zbudowany jest klocek
+	 * 
 	 * @return bloczki składające się na kocek
 	 */
 	public final Set<FakeBlock> getBlocks()

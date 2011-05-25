@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 /**
  * Klasa reprezentująca planszę gry
- *
+ * 
+ * @author Anna Stępień
  */
 public class FakeBoard 
 {
@@ -15,6 +16,7 @@ public class FakeBoard
 	
 	/**
 	 * Tworzy nowy obiekt planszy
+	 * 
 	 * @param fakeRows lista wierszy składających się na planszę
 	 */
 	public FakeBoard(final ArrayList<ArrayList<FakeBlock>> fakeRows)
@@ -24,6 +26,7 @@ public class FakeBoard
 	
 	/**
 	 * Zwraca planszę gry przeznaczoną dla widoku
+	 * 
 	 * @return plansza gry
 	 */
 	public final ArrayList<ArrayList<FakeBlock>> getRows()

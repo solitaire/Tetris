@@ -1,9 +1,16 @@
 package pl.edu.pw.elka.www.proz.tetris.model;
 
-import java.awt.Color;
 import java.util.HashSet;
 import java.util.Set;
 
+import pl.edu.pw.elka.www.proz.tetris.config.ShapeConfig;
+
+/**
+ * Fabryka klocka typu IShape
+ * 
+ * @author Anna Stępień
+ *
+ */
 class IShapeFactory implements Factory 
 {
 
@@ -17,7 +24,7 @@ class IShapeFactory implements Factory
 		blocks.add(new Coordinates(0, 0));
 		blocks.add(new Coordinates(1, 0));
 		
-		return new Shape(blocks, Color.RED, new CounterClockwiseRotationStrategy());
+		return new Shape(blocks, ShapeConfig.ISHAPE_COLOR, new CounterClockwiseRotationStrategy());
 	}
 
 }

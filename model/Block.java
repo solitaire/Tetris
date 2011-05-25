@@ -4,6 +4,8 @@ import java.awt.Color;
 
 /**
  * Klasa reprezentująca pojedynczy blok planszy
+ * 
+ * @author Anna Stępień
  */
 public class Block
 {
@@ -11,6 +13,10 @@ public class Block
 	/* Kolor bloku*/
 	private Color color;
 	
+	/**
+	 * Tworzy nowy pusty blok
+	 * 
+	 */
 	public Block()
 	{
 		color = null;
@@ -18,6 +24,7 @@ public class Block
 	
 	/**
 	 * Tworzy nowy blok o określonym kolorze
+	 * 
 	 * @param color kolor bloku
 	 */
 	public Block(final Color color)
@@ -26,6 +33,7 @@ public class Block
 	}
 
 	/**
+	 * Zwraca kolor bloku
 	 * 
 	 * @return kolor bloku
 	 */
@@ -35,6 +43,7 @@ public class Block
 	}
 	
 	/**
+	 * Ustawia nowy kolor bloku
 	 * 
 	 * @param color nowy kolor
 	 */

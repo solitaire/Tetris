@@ -10,6 +10,8 @@ import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
 
 /**
  * Klasa reprezentująca klocek
+ * 
+ * @author Anna Stępień
  */
 class Shape 
 {
@@ -26,6 +28,7 @@ class Shape
 	
 	/**
 	 * Tworzy nowy obiekt klocka o zadanych współrzędnych i kolorze
+	 * 
 	 * @param blocks zbiór punktów reprezentujących klocek
 	 * @param color kolor klocka
 	 * @param rotationStrategy sposób obrotów
@@ -40,6 +43,7 @@ class Shape
 	
 	/**
 	 * Zwraca kolor klocka
+	 * 
 	 * @return Kolor klocka
 	 */
 	public final Color getColor()
@@ -49,6 +53,7 @@ class Shape
 	
 	/**
 	 * Zwraca zbiór współrzędnych
+	 * 
 	 * @return zbiór punktów tworzących kolcek
 	 */
 	public final Set<Coordinates> getCoords()
@@ -58,6 +63,7 @@ class Shape
 	
 	/**
 	 * Przesuwa klocek w lewo
+	 * 
 	 */
 	public void moveLeft()
 	{
@@ -66,6 +72,7 @@ class Shape
 	
 	/**
 	 * Przesuwa klocek w prawo
+	 * 
 	 */
 	public void moveRight()
 	{
@@ -74,6 +81,7 @@ class Shape
 	
 	/**
 	 * Przesuwa klocek w dół
+	 * 
 	 */
 	public void moveDown()
 	{
@@ -82,6 +90,7 @@ class Shape
 	
 	/**
 	 * Obraca zgodnie z przyjętą strategią obrotów
+	 * 
 	 */
 	public void rotate()
 	{
@@ -94,6 +103,7 @@ class Shape
 	
 	/**
 	 * Zwraca obiekt klocka po wykonaniu obrotu
+	 * 
 	 * @return Obiekt klocka po wykonaniu pojedynczego obrotu, nie zmienia współrzędnch
 	 */
 	public Shape getNextRotation()
@@ -106,6 +116,7 @@ class Shape
 	
 	/**
 	 * Ustawia strategię obrotów
+	 * 
 	 * @param rotationStrategy Strategia obrotów
 	 */
 	public void setRotationStrategy(final RotationStrategy rotationStrategy)
@@ -115,6 +126,7 @@ class Shape
 
 	/**
 	 * Ustawia nowe wspoółrzędne środka klocka
+	 * 
 	 * @param center Nowe współrzędne środka klocka
 	 */
 	public void setCenter(final Coordinates center) 
@@ -123,6 +135,7 @@ class Shape
 	}
 
 	/**
+	 * Zwraca wspólrzędne środka klocka
 	 * 
 	 * @return Współrzędne środka klocka
 	 */
@@ -133,6 +146,7 @@ class Shape
 	
 	/**
 	 * Zwraca wysokość klocka
+	 * 
 	 * @return wysokość klocka
 	 */
 	public final int getHeight()
@@ -148,6 +162,7 @@ class Shape
 	
 	/**
 	 * Zwraca szerokość klocka
+	 * 
 	 * @return szerokość klocka
 	 */
 	public final int getWidth()
@@ -164,6 +179,7 @@ class Shape
 	
 	/**
 	 * Sprawdza czy klocek może znaleźć się w nowym położeniu 
+	 * 
 	 * @param board Obiekt planszy
 	 * @return true jeśli występuje kolizja, false w przeciwnym wypadku
 	 */
@@ -179,6 +195,7 @@ class Shape
 	
 	/**
 	 * Zwraca obeikt klocka przeznaczony dla widoku
+	 * 
 	 * @return obiekt klocka przeznaczony dla widoku
 	 */
 	public FakeShape getFake()

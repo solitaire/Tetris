@@ -6,7 +6,8 @@ import pl.edu.pw.elka.www.proz.tetris.model.Coordinates;
 
 /**
  * Klasa reprezentująca pojedyczny blok planszy
- *
+ * 
+ * @author Anna Stępień
  */
 public class FakeBlock 
 {
@@ -19,6 +20,7 @@ public class FakeBlock
 	
 	/**
 	 * Tworzy nowy obiekt bloczka przeznaczony dla widoku
+	 * 
 	 * @param positon Położenie bloczka
 	 * @param color Kolor bloczka
 	 */
@@ -30,6 +32,7 @@ public class FakeBlock
 	
 	/**
 	 * Zwraca położenie bloczka
+	 * 
 	 * @return położenie
 	 */
 	public final Coordinates getPosition()
@@ -39,6 +42,7 @@ public class FakeBlock
 	
 	/**
 	 * Zwraca kolor bloczka
+	 * 
 	 * @return kolor 
 	 */
 	public final Color getColor()

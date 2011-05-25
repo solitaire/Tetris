@@ -2,21 +2,21 @@ package pl.edu.pw.elka.www.proz.tetris.fake;
 
 /**
  * Reprezentuje wynik gry (wynik, poziom, liczba usuniętch wierszy)
- *
+ * 
+ * @author Anna Stępień
  */
 public class FakeScore 
 {
 	
 	/** Wynik */
 	final int score;
-	
 	/** Poziom */
 	final int level;
-	
 	/** Liczba usuniętych wierszy */
 	final int removedRows;
 	
 	/**
+	 * Tworzy nowy obiekt wyniku przeznaczony dla widoku
 	 * 
 	 * @param score Wynik
 	 * @param level Poziom
@@ -31,6 +31,7 @@ public class FakeScore
 	
 	/**
 	 * Zwraca wynik 
+	 * 
 	 * @return wynik
 	 */
 	public final int getScore()
@@ -40,6 +41,7 @@ public class FakeScore
 	
 	/**
 	 * Zwraca poziom gry
+	 * 
 	 * @return poziom
 	 */
 	public final int getLevel()
@@ -49,6 +51,7 @@ public class FakeScore
 	
 	/**
 	 * Zwraca liczbę usuniętych wierszy
+	 * 
 	 * @return liczba usuniętych wierszy
 	 */
 	public final int getRemovedRows()

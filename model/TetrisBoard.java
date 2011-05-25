@@ -3,23 +3,18 @@ package pl.edu.pw.elka.www.proz.tetris.model;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import pl.edu.pw.elka.www.proz.tetris.config.TetrisConfig;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeBlock;
 import pl.edu.pw.elka.www.proz.tetris.fake.FakeBoard;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
 
 /**
  * Reprezentuje planszę gry tetris
- *
+ * 
+ * @author Anna Stępień
  */
 class TetrisBoard 
 {
 	
-	/* Wysokość planszy*/
-	private final static int HEIGHT = 22;
-	/* Szerokość planszy */
-	private final static int LENGTH = 12;
-	/* Kolor obramowania planszy */
-	private final Color borderColor = Color.DARK_GRAY;
 	/* Lista przechowująca wiersze składające się na planszę */
 	private ArrayList<Row> board;
 	/*  Liczba usuniętych wierszy */
@@ -36,21 +31,30 @@ class TetrisBoard
 		/** Lista wszytkich bloków składających się na wiersz */
 		private final ArrayList<Block> blocks;
 		
+		/**
+		 * Tworzy nowy pusty wiersz
+		 * 
+		 */
 		public Row()
 		{
-			blocks = new ArrayList<Block>(LENGTH);
+			blocks = new ArrayList<Block>(TetrisConfig.WIDTH);
 			
-			for (int i = 0; i < LENGTH; ++i)
+			for (int i = 0; i < TetrisConfig.WIDTH; ++i)
 			{
 				blocks.add(new Block());
 			}
 		}
 		
+		/**
+		 * Tworzy nowy wiersz o blokach w danym kolorze
+		 * 
+		 * @param color kolor wiersza
+		 */
 		public Row(final Color color)
 		{
-			blocks = new ArrayList<Block>(LENGTH);
+			blocks = new ArrayList<Block>(TetrisConfig.WIDTH);
 			
-			for (int i = 0; i < LENGTH; ++i)
+			for (int i = 0; i < TetrisConfig.WIDTH; ++i)
 			{
 				blocks.add(new Block(color));
 			}
@@ -58,6 +62,7 @@ class TetrisBoard
 		
 		/**
 		 * Zwraca wszystkie bloki należące do wiersza
+		 * 
 		 * @return lista wszystkich blokow składających się na wiersz
 		 */
 		public final ArrayList<Block> getBlocks() 
@@ -67,6 +72,7 @@ class TetrisBoard
 		
 		/**
 		 * Zwraca blok o podanej pozycji
+		 * 
 		 * @param position położenie bloku w wierszu
 		 * @return blok
 		 */
@@ -77,6 +83,7 @@ class TetrisBoard
 		
 		/**
 		 * Koloruje blok o danej pozycji na zadany kolor
+		 * 
 		 * @param position położenie bloku w wierszu
 		 * @param color    nowy kolor
 		 */
@@ -87,6 +94,7 @@ class TetrisBoard
 		
 		/**
 		 * Sprawdza czy wiesz jest pełen
+		 * 
 		 * @return true jeśli wiersz jest pełen, false w przeciwnym wpadku
 		 */
 		public boolean isFull()
@@ -101,10 +109,11 @@ class TetrisBoard
 
 		/**
 		 * Czyści cały wiersz, zostawia obramowanie
+		 * 
 		 */
 		public void clear()
 		{
-			for (Block block : blocks.subList(1, 11)) 
+			for (Block block : blocks.subList(1, TetrisConfig.WIDTH - 1)) 
 			{
 				block.setColor(null);
 			}
@@ -115,13 +124,14 @@ class TetrisBoard
 
 	/**
 	 * Tworzy nową planszę
+	 * 
 	 */
 	public TetrisBoard()
 	{
-		board  = new ArrayList<Row>(HEIGHT);
+		board  = new ArrayList<Row>(TetrisConfig.HEIGHT);
 		removedRows = 0;
 		
-		for (int i = 0; i < HEIGHT; ++i)
+		for (int i = 0; i < TetrisConfig.HEIGHT; ++i)
 		{
 			board.add(new Row());
 		}
@@ -133,6 +143,7 @@ class TetrisBoard
 	
 	/**
 	 * Zwraca wiersze planszy
+	 * 
 	 * @return wiersze planszy
 	 */
 	public final ArrayList<Row> getRows()
@@ -143,6 +154,7 @@ class TetrisBoard
 
 	/**
 	 * Koloruje pojedynczy blok planszy na określony kolor
+	 * 
 	 * @param position Położenie klocka na planszy
 	 * @param color Nowy kolor klocka
 	 */
@@ -151,7 +163,7 @@ class TetrisBoard
 		
 		try
 		{
-			board.get(HEIGHT-1-position.getY()).setBlock(position.getX(), color);
+			board.get(TetrisConfig.HEIGHT-1-position.getY()).setBlock(position.getX(), color);
 		}
 		catch (IndexOutOfBoundsException e)
 		{
@@ -162,6 +174,7 @@ class TetrisBoard
 	
 	/**
 	 * Sprawdza czy blok planszy jest zajęty
+	 * 
 	 * @param position Położenie klocka na planszy
 	 * @return true jeśli blok planszy jest zajęty, false w przeciwnym wypadku
 	 */
@@ -170,7 +183,7 @@ class TetrisBoard
 
 		try
 		{
-			return board.get(HEIGHT-1-position.getY()).getBlock(position.getX()).getColor() != null;
+			return board.get(TetrisConfig.HEIGHT-1-position.getY()).getBlock(position.getX()).getColor() != null;
 		}
 		catch (IndexOutOfBoundsException e)
 		{
@@ -182,6 +195,7 @@ class TetrisBoard
 	
 	/**
 	 * Umieszcza klocek na planszy
+	 * 
 	 * @param shape klocek który zostanie umieszczony na planszy
 	 */
 	public void addShape(final Shape shape)
@@ -194,6 +208,7 @@ class TetrisBoard
 	
 	/**
 	 * Usuwa i zwraca liczbę usuniętych wierszy
+	 * 
 	 * @return liczba usuniętych wierszy
 	 */
 	public int removeFullRows()
@@ -202,7 +217,7 @@ class TetrisBoard
 		
 		ArrayList<Row> fullRows = new ArrayList<Row>();
 		
-		for (Row row : board.subList(1, HEIGHT-1)) 
+		for (Row row : board.subList(1, TetrisConfig.HEIGHT-1)) 
 		{
 			if (row.isFull())
 			{
@@ -213,7 +228,7 @@ class TetrisBoard
 		numOfRemoved = fullRows.size();
 		board.removeAll(fullRows);
 		
-		while(board.size() != HEIGHT)
+		while(board.size() != TetrisConfig.HEIGHT)
 		{
 			board.add(1, new Row());
 		}
@@ -225,6 +240,7 @@ class TetrisBoard
 	
 	/**
 	 * Zwraca liczbę usuniętych wierszy
+	 * 
 	 * @return Liczba usuniętych wierszy
 	 */
 	public int getRemovedRows()
@@ -234,35 +250,21 @@ class TetrisBoard
 	
 	/**
 	 * Czyści całą planszę gry
+	 * 
 	 */
 	public void clear()
 	{
 		removedRows = 0;
-		for (Row row : board.subList(1, HEIGHT-1)) 
+		for (Row row : board.subList(1, TetrisConfig.HEIGHT-1)) 
 		{
 			row.clear();
 		}
 	}
 	
-	/**
-	 * Tworzy obramowanie planszy
-	 */
-	private void createBorder()
-	{
-		for (Row row : board) 
-		{
-			row.setBlock(0, borderColor);
-			row.setBlock(11, borderColor);
-		}
-		
-		board.set(0, new Row(borderColor));
-		board.set(21, new Row(borderColor));
-	}
-
-
 
 	/**
 	 * Tworzy obiekt typu FakeBoard 
+	 * 
 	 * @param currentShape aktywny klocek
 	 * @return obiekt planszy przeznaczony dla widoku
 	 */
@@ -289,10 +291,26 @@ class TetrisBoard
 		
 		for (Coordinates coordinates : currentShape.getCoords()) 
 		{
-			int row = 21 - (coordinates.getY()+currentShape.getCenter().getY());
+			int row = TetrisConfig.HEIGHT -1 - (coordinates.getY()+currentShape.getCenter().getY());
 			int col = coordinates.getX() + currentShape.getCenter().getX();
 			fakeRows.get(row).set(col, new FakeBlock(new Coordinates(col, row), currentShape.getColor()));
 		}
 		return new FakeBoard(fakeRows);
+	}
+	
+	/**
+	 * Tworzy obramowanie planszy
+	 * 
+	 */
+	private void createBorder()
+	{
+		for (Row row : board) 
+		{
+			row.setBlock(0, TetrisConfig.BORDER_COLOR);
+			row.setBlock(TetrisConfig.WIDTH - 1, TetrisConfig.BORDER_COLOR);
+		}
+		
+		board.set(0, new Row(TetrisConfig.BORDER_COLOR));
+		board.set(TetrisConfig.HEIGHT - 1, new Row(TetrisConfig.BORDER_COLOR));
 	}
 }

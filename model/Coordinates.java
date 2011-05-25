@@ -2,7 +2,8 @@ package pl.edu.pw.elka.www.proz.tetris.model;
 
 /**
  * Klasa reprezentująca współrzędne punktu
- *
+ * 
+ * @author Anna Stępień
  */
 public class Coordinates 
 {
@@ -14,6 +15,7 @@ public class Coordinates
 	
 	/**
 	 * Tworzy nowy obiekt współrzędnych
+	 * 
 	 * @param x współrzędna x
 	 * @param y współrzędna y
 	 */
@@ -24,6 +26,7 @@ public class Coordinates
 	}
 	
 	/**
+	 * Zwraca współrzędną x punktu
 	 * 
 	 * @return współrzędna x
 	 */
@@ -33,6 +36,7 @@ public class Coordinates
 	}
 	
 	/**
+	 * Zwraca współrzędną y punktu
 	 * 
 	 * @return wspólrzędna y
 	 */
@@ -42,6 +46,7 @@ public class Coordinates
 	}
 	
 	/**
+	 * Ustwia nową współrzędną x 
 	 * 
 	 * @param x nowa współrzędna x
 	 */
@@ -51,6 +56,7 @@ public class Coordinates
 	}
 	
 	/**
+	 * Ustawia nową współrzędną y
 	 * 
 	 * @param y nowa współrzędna y
 	 */
@@ -62,8 +68,12 @@ public class Coordinates
 	@Override
 	public boolean equals(Object obj)
 	{
+		if (obj == null)
+			return false;
 		if (this == obj)
 			return true;
+		if (obj.getClass() != getClass())
+			return false;
 		Coordinates other = (Coordinates) obj;
 		if (other.getX() == this.x && other.getY() == this.y)
 			return true;

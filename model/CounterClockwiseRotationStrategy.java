@@ -2,7 +2,8 @@ package pl.edu.pw.elka.www.proz.tetris.model;
 
 /**
  * Klasa reprezentująca obrót punktu przeciwnie do ruchu wskazówek zegara
- *
+ * 
+ * @author Anna Stępień
  */
 class CounterClockwiseRotationStrategy implements RotationStrategy 
 {

@@ -2,7 +2,8 @@ package pl.edu.pw.elka.www.proz.tetris.model;
 
 /**
  * Pozostawia współrzędne bez zmian
- *
+ * 
+ * @author Anna Stępień
  */
 public class NoRotationStrategy implements RotationStrategy 
 {
