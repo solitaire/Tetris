@@ -1,9 +1,10 @@
-package pl.edu.pw.elka.www.proz.tetris.fake;
+package tetris.fake;
 
 import javax.swing.table.AbstractTableModel;
 
 /**
  * Tworzy model z najlepszymi wynikami dla widoku
+ * 
  * @author Anna Stępień
  *
  */

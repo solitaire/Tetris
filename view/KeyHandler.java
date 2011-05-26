@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.view;
+package tetris.view;
 
 import java.awt.event.ActionEvent;
 import java.util.concurrent.BlockingQueue;
@@ -7,12 +7,12 @@ import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
-import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.KeyDownPressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.KeyLeftPressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.KeyRightPressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.KeyUpPressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.SpacePressedEvent;
+import tetris.events.GameEvent;
+import tetris.events.KeyDownPressedEvent;
+import tetris.events.KeyLeftPressedEvent;
+import tetris.events.KeyRightPressedEvent;
+import tetris.events.KeyUpPressedEvent;
+import tetris.events.SpacePressedEvent;
 
 /**
  * Realizuje obsługę klawiatury

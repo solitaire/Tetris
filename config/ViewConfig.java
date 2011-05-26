@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.config;
+package tetris.config;
 
 /**
  * Konfiguracja widoku
@@ -6,17 +6,17 @@ package pl.edu.pw.elka.www.proz.tetris.config;
  * @author Anna Stępień
  *
  */
-public class ViewConfig 
+final public class ViewConfig 
 {
 
 	/** Szerokość  okna aplikacji */
-	public static final int FRAME_WIDTH = 640;
+	public final static int FRAME_WIDTH = 640;
 	/** Wysokość okna aplikacji */
-	public static final int FRAME_HEIGHT = 850;
+	public final static int FRAME_HEIGHT = 850;
 	/** Szerokość panelu planszy */
-	public static final int BOARD_WIDTH = 375;
+	public final static int BOARD_WIDTH = 375;
 	/** Wysokość panelu planszy */;
-	public static final int BOARD_HEIGHT = 675;
+	public final static int BOARD_HEIGHT = 675;
 	
 	private ViewConfig(){
 		

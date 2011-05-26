@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.view;
+package tetris.view;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -8,12 +8,12 @@ import java.util.concurrent.BlockingQueue;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.NewHighScoreEvent;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeBoard;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeHighScore;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeScore;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
+import tetris.events.GameEvent;
+import tetris.events.NewHighScoreEvent;
+import tetris.fake.FakeBoard;
+import tetris.fake.FakeHighScore;
+import tetris.fake.FakeScore;
+import tetris.fake.FakeShape;
 
 /**
  * Widok gry
@@ -171,7 +171,8 @@ public class View
 		{
 			
 			@Override
-			public void run() {
+			public void run() 
+			{
 				highScoreDialog.display(fakeHighScore);
 			}
 		});
@@ -207,7 +208,7 @@ public class View
 			@Override
 			public void run() 
 			{
-				JOptionPane.showMessageDialog(gameFrame,"Koniec gry!", "Tetris", JOptionPane.PLAIN_MESSAGE);	
+				JOptionPane.showMessageDialog(gameFrame,Messages.getString("Messages.EndMessage"), Messages.getString("Messages.GameName"), JOptionPane.PLAIN_MESSAGE);	 //$NON-NLS-1$ //$NON-NLS-2$
 			}
 		});
 	}
@@ -216,14 +217,16 @@ public class View
 	 * Wyświetla okienko z prośbą o podanie imienia i rejestruje zdarzenie
 	 * 
 	 */
-	public void displayRegisterHighScoreDialog(final FakeScore score) {
+	public void displayRegisterHighScoreDialog(final FakeScore score) 
+	{
 		
 		SwingUtilities.invokeLater(new Runnable() 
 		{
 			
 			@Override
-			public void run() {
-				String name = JOptionPane.showInputDialog(null, "Najlepsze wyniki", "Podaj imię",
+			public void run() 
+			{
+				String name = JOptionPane.showInputDialog(null, Messages.getString("Messages.HighScore"), Messages.getString("Messages.PlayerNameRequest"), //$NON-NLS-1$ //$NON-NLS-2$
 						JOptionPane.INFORMATION_MESSAGE);
 				try 
 				{

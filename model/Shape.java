@@ -1,11 +1,11 @@
-package pl.edu.pw.elka.www.proz.tetris.model;
+package tetris.model;
 
 import java.awt.Color;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
+import tetris.fake.FakeShape;
 
 
 /**
@@ -16,11 +16,11 @@ import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
 class Shape 
 {
 	
-	/*  Współrzdne środka */
+	/**  Współrzdne środka */
 	private Coordinates center;
-	/*Kolor*/
+	/** Kolor*/
 	private Color color;
-	/* Zbiór punktów tworzących klocek */
+	/** Zbiór punktów tworzących klocek */
 	private Set<Coordinates> blocks;
 	/** Strategia obrotów */
 	private RotationStrategy rotationStrategy;

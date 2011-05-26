@@ -1,24 +1,24 @@
-package pl.edu.pw.elka.www.proz.tetris.controller;
+package tetris.controller;
 
 
 import java.util.HashMap;
 import java.util.concurrent.BlockingQueue;
 
-import pl.edu.pw.elka.www.proz.tetris.events.DisplayHighScoreEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.KeyDownPressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.KeyLeftPressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.KeyRightPressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.KeyUpPressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.NewHighScoreEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.PauseButtonPressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.SpacePressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.StartButtonPressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.StopButtonPressedEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.TimerTickEvent;
-import pl.edu.pw.elka.www.proz.tetris.model.Coordinates;
-import pl.edu.pw.elka.www.proz.tetris.model.Model;
-import pl.edu.pw.elka.www.proz.tetris.view.View;
+import tetris.events.DisplayHighScoreEvent;
+import tetris.events.GameEvent;
+import tetris.events.KeyDownPressedEvent;
+import tetris.events.KeyLeftPressedEvent;
+import tetris.events.KeyRightPressedEvent;
+import tetris.events.KeyUpPressedEvent;
+import tetris.events.NewHighScoreEvent;
+import tetris.events.PauseButtonPressedEvent;
+import tetris.events.SpacePressedEvent;
+import tetris.events.StartButtonPressedEvent;
+import tetris.events.StopButtonPressedEvent;
+import tetris.events.TimerTickEvent;
+import tetris.model.Coordinates;
+import tetris.model.Model;
+import tetris.view.View;
 
 /**
  * Kontroler gry
@@ -30,15 +30,15 @@ import pl.edu.pw.elka.www.proz.tetris.view.View;
 public class Controller
 {
 	
-	/* Model gry */
+	/** Model gry */
 	private final Model model;
-	/* Widok gry */
+	/** Widok gry */
 	private final View view;
-	/* Kolejka blokująca przechowująca nadchodzące zdarzenia */
+	/** Kolejka blokująca przechowująca nadchodzące zdarzenia */
 	private final BlockingQueue<GameEvent> eventQueue;
-	/* Mapa wiążąca zdarzenia z akcjami */
+	/** Mapa wiążąca zdarzenia z akcjami */
 	private final HashMap<Class<? extends GameEvent>, GameAction> actionMap;
-	/* Timer */
+	/** Timer */
 	private final GameTimer gameTimer;
 	
 	

@@ -1,10 +1,10 @@
-package pl.edu.pw.elka.www.proz.tetris.view;
+package tetris.view;
 
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeScore;
+import tetris.fake.FakeScore;
 
 /**
  * Panel wyświetlający informacje o stanie gry
@@ -27,9 +27,9 @@ class InfoPanel extends JPanel
 	public InfoPanel()
 	{
 		setLayout(new GridLayout(3,0));
-		score = new JLabel("Wynik: ");
-		level = new JLabel("Poziom: ");
-		removedRows = new JLabel("Usunięte wiesze: ");
+		score = new JLabel(Messages.getString("ScoreInfoScore")); //$NON-NLS-1$
+		level = new JLabel(Messages.getString("ScoreInfoLevel")); //$NON-NLS-1$
+		removedRows = new JLabel(Messages.getString("ScoreInfoRemovedRows")); //$NON-NLS-1$
 		add(score);
 		add(level);
 		add(removedRows);
@@ -37,29 +37,32 @@ class InfoPanel extends JPanel
 	
 	/**
 	 * Uaktualnia liczbę zdobytych punktów
+	 * 
 	 * @param fake
 	 */
 	public void updateScore(FakeScore fake)
 	{
-		score.setText("Wynik: " + String.valueOf(fake.getScore()));
+		score.setText(Messages.getString("ScoreInfoLevel") + String.valueOf(fake.getScore())); //$NON-NLS-1$
 	}
 	
 	/**
 	 * Uaktualnia liczbę usuniętych wierszy
+	 * 
 	 * @param fake
 	 */
 	public void updateRemovedRows(FakeScore fake)
 	{
-		removedRows.setText("Usunięte wiersze: " + String.valueOf(fake.getRemovedRows()));
+		removedRows.setText(Messages.getString("ScoreInfoRemovedRows") + String.valueOf(fake.getRemovedRows())); //$NON-NLS-1$
 	}
 	
 	/**
 	 * Uaktualnia poziom
+	 * 
 	 * @param fake
 	 */
 	public void updateLevel(FakeScore fake)
 	{
-		level.setText("Poziom: " + String.valueOf(fake.getLevel()));
+		level.setText(Messages.getString("ScoreInfoLevel") + String.valueOf(fake.getLevel())); //$NON-NLS-1$
 	}
 
 }

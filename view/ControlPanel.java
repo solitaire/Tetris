@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.view;
+package tetris.view;
 
 import java.util.concurrent.BlockingQueue;
 
@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
+import tetris.events.GameEvent;
 
 /**
  * Panel sterujący 
@@ -18,13 +18,13 @@ class ControlPanel extends JPanel
 {
 	
 	private static final long serialVersionUID = 1L;
-	/* Przycisk rozpoczynający nową grę */
+	/** Przycisk rozpoczynający nową grę */
 	private JButton startButton;
-	/* Przycisk kończący grę */
+	/** Przycisk kończący grę */
 	private JButton stopButton;
-	/* Przycisk pauzujący/wznawiający grę */
+	/** Przycisk pauzujący/wznawiający grę */
 	private JButton pauseButton;
-	/* Kolejka blokująca przechowująca zdarzenia gry */
+	/** Kolejka blokująca przechowująca zdarzenia gry */
 	private BlockingQueue<GameEvent> eventQueue;
 	
 	/**
@@ -36,9 +36,9 @@ class ControlPanel extends JPanel
 	{
 		
 		eventQueue = queue;
-		startButton = new JButton("Start");
-		stopButton  = new JButton("Stop");
-		pauseButton = new JButton("Pauza");
+		startButton = new JButton(Messages.getString("Buttons.Start")); //$NON-NLS-1$
+		stopButton  = new JButton(Messages.getString("Buttons.Stop")); //$NON-NLS-1$
+		pauseButton = new JButton(Messages.getString("Buttons.Pause")); //$NON-NLS-1$
 		
 		stopButton.setEnabled(false);
 		pauseButton.setEnabled(false);

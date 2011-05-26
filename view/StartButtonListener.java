@@ -1,11 +1,11 @@
-package pl.edu.pw.elka.www.proz.tetris.view;
+package tetris.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.BlockingQueue;
 
-import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.StartButtonPressedEvent;
+import tetris.events.GameEvent;
+import tetris.events.StartButtonPressedEvent;
 
 /**
  * Listener przycisku start 
@@ -15,9 +15,14 @@ import pl.edu.pw.elka.www.proz.tetris.events.StartButtonPressedEvent;
  */
 class StartButtonListener implements ActionListener 
 {
-	
+	/** Kolejka zdarzeń */
 	private BlockingQueue<GameEvent> eventQueue;
 	
+	/**
+	 * Tworz nowy listener
+	 * 
+	 * @param queue kolejka zdarzeń
+	 */
 	public StartButtonListener(BlockingQueue<GameEvent> queue)
 	{
 		eventQueue = queue;

@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.view;
+package tetris.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,8 +7,8 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeBlock;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
+import tetris.fake.FakeBlock;
+import tetris.fake.FakeShape;
 
 /**
  * Panel wyświetlający podgląd na następny klocek

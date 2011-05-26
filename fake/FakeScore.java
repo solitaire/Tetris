@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.fake;
+package tetris.fake;
 
 /**
  * Reprezentuje wynik gry (wynik, poziom, liczba usuniętch wierszy)

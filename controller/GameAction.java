@@ -1,6 +1,6 @@
-package pl.edu.pw.elka.www.proz.tetris.controller;
+package tetris.controller;
 
-import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
+import tetris.events.GameEvent;
 
 /**
  * Abstrakcyjna klasa reprezentująca akcję gry

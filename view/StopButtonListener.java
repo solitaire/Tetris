@@ -1,11 +1,11 @@
-package pl.edu.pw.elka.www.proz.tetris.view;
+package tetris.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.BlockingQueue;
 
-import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.StopButtonPressedEvent;
+import tetris.events.GameEvent;
+import tetris.events.StopButtonPressedEvent;
 
 /**
  * Listener przycisku stop
@@ -15,9 +15,14 @@ import pl.edu.pw.elka.www.proz.tetris.events.StopButtonPressedEvent;
  */
 public class StopButtonListener implements ActionListener 
 {
-	
+	/** Kolejka zdarzeń */
 	private final BlockingQueue<GameEvent> blockingQueue;
 	
+	/**
+	 * Tworzy nowy listener
+	 * 
+	 * @param queue kolejka zdarzeń
+	 */
 	public StopButtonListener(BlockingQueue<GameEvent> queue)
 	{
 		blockingQueue = queue;

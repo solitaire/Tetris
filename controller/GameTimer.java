@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.controller;
+package tetris.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,8 +6,8 @@ import java.util.concurrent.BlockingQueue;
 
 import javax.swing.Timer;
 
-import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.TimerTickEvent;
+import tetris.events.GameEvent;
+import tetris.events.TimerTickEvent;
 
 /**
  * Klasa timera gry, stanowi opakowanie dla Swingowego Timera.
@@ -21,9 +21,9 @@ import pl.edu.pw.elka.www.proz.tetris.events.TimerTickEvent;
 class GameTimer 
 {
 	
-	/* Timer */
+	/** Timer */
 	private Timer timer;
-	/* Kolejka blokująca */
+	/** Kolejka blokująca */
 	private BlockingQueue<GameEvent> eventQueue;
 	
 	

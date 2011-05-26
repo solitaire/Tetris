@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.config;
+package tetris.config;
 
 import java.awt.Color;
 
@@ -8,7 +8,7 @@ import java.awt.Color;
  * @author Anna Stępień
  *
  */
-public class TetrisConfig 
+final public class TetrisConfig 
 {
 	/** Bonusowe punkty za usunięty wiersz */
 	public final static int REMOVED_ROWS_BONUS = 15;
@@ -25,11 +25,11 @@ public class TetrisConfig
 	/* Kolor obramowania planszy */
 	public final static Color BORDER_COLOR = Color.DARK_GRAY;
 	/**Plik z danymi */
-	public static final String HIGHSCORE_FILE = "score.txt";
+	public final static String HIGHSCORE_FILE = "score.txt";
 	/** Współrzędna x na której pojawia się nowy klocek */
-	public static final int BOARD_X_CENTER = 6;
+	public final static int BOARD_X_CENTER = 6;
 	/** Współrzędna y na której pojawia się nowy klocek */
-	public static final int BOARD_Y_CENTER = 20;
+	public final static int BOARD_Y_CENTER = 20;
 	
 	
 	

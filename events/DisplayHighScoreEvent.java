@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.events;
+package tetris.events;
 
 /**
  * Żadanie wyświetlenia najlepszych wyników

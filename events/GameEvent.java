@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.events;
+package tetris.events;
 
 /**
  * Klasa reprezentująca zdarzenie gry

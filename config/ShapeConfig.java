@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.config;
+package tetris.config;
 
 import java.awt.Color;
 
@@ -8,7 +8,7 @@ import java.awt.Color;
  * @author Anna Stępień
  *
  */
-public class ShapeConfig 
+final public class ShapeConfig 
 {
 	/** Kolor klocka typu IShape */
 	public final static Color ISHAPE_COLOR = Color.RED;

@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.view;
+package tetris.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,10 +10,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import pl.edu.pw.elka.www.proz.tetris.config.ViewConfig;
-import pl.edu.pw.elka.www.proz.tetris.events.DisplayHighScoreEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
-import pl.edu.pw.elka.www.proz.tetris.events.StartButtonPressedEvent;
+import tetris.config.ViewConfig;
+import tetris.events.DisplayHighScoreEvent;
+import tetris.events.GameEvent;
+import tetris.events.StartButtonPressedEvent;
 
 
 /**
@@ -32,24 +32,25 @@ public class GameFrame extends JFrame
 	
 	/**
 	 * Tworzy nowe okno aplikacji
+	 * 
 	 * @param queue kolejka zdarzeń
 	 */
 	public GameFrame(BlockingQueue<GameEvent> queue)
 	{
 		setSize(ViewConfig.FRAME_WIDTH, ViewConfig.FRAME_HEIGHT);
 		setResizable(false);
-		setTitle("Tetris");
+		setTitle(Messages.getString("GameFrame.Title")); //$NON-NLS-1$
 		eventQueue = queue;
 		
 		menuBar = new JMenuBar();
-		JMenu gameMenu = new JMenu("Gra");
-		JMenu helpMenu = new JMenu("Pomoc");
+		JMenu gameMenu = new JMenu(Messages.getString("GameFrame.MainMenu")); //$NON-NLS-1$
+		JMenu helpMenu = new JMenu(Messages.getString("GameFrame.Help")); //$NON-NLS-1$
 		
-		JMenuItem newGameItem = new JMenuItem("Nowa");
-		JMenuItem scoreItem = new JMenuItem("Wyniki");
-		JMenuItem exitItem = new JMenuItem("Zakończ");
+		JMenuItem newGameItem = new JMenuItem(Messages.getString("GameFrame.NewGame")); //$NON-NLS-1$
+		JMenuItem scoreItem = new JMenuItem(Messages.getString("GameFrame.Score")); //$NON-NLS-1$
+		JMenuItem exitItem = new JMenuItem(Messages.getString("GameFrame.Close")); //$NON-NLS-1$
 		
-		JMenuItem aboutItem = new JMenuItem("O programie");
+		JMenuItem aboutItem = new JMenuItem(Messages.getString("GameFrame.About")); //$NON-NLS-1$
 		
 		
 		newGameItem.addActionListener(new ActionListener() 
@@ -104,8 +105,7 @@ public class GameFrame extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				final String about = "Implementacja gry Tetris.\n" +
-						"Autor: Anna Stępień, 2011";
+				final String about = Messages.getString("GameFrame.Info"); //$NON-NLS-1$
 				JOptionPane.showMessageDialog(null, about);
 			}
 		});

@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.view;
+package tetris.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,10 +9,10 @@ import java.util.concurrent.BlockingQueue;
 
 import javax.swing.JPanel;
 
-import pl.edu.pw.elka.www.proz.tetris.config.ViewConfig;
-import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeBlock;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeBoard;
+import tetris.config.ViewConfig;
+import tetris.events.GameEvent;
+import tetris.fake.FakeBlock;
+import tetris.fake.FakeBoard;
 
 /**
  * Panel wyświetlający planszę gry

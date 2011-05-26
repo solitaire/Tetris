@@ -1,9 +1,9 @@
-package pl.edu.pw.elka.www.proz.tetris.model;
+package tetris.model;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import pl.edu.pw.elka.www.proz.tetris.config.ShapeConfig;
+import tetris.config.ShapeConfig;
 
 /**
  * Fabryka klocka typu SShape

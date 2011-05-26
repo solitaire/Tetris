@@ -1,10 +1,10 @@
-package pl.edu.pw.elka.www.proz.tetris.model;
+package tetris.model;
 
-import pl.edu.pw.elka.www.proz.tetris.config.TetrisConfig;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeBoard;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeHighScore;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeScore;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeShape;
+import tetris.config.TetrisConfig;
+import tetris.fake.FakeBoard;
+import tetris.fake.FakeHighScore;
+import tetris.fake.FakeScore;
+import tetris.fake.FakeShape;
 
 /**
  * Model gry

@@ -1,8 +1,8 @@
-package pl.edu.pw.elka.www.proz.tetris.fake;
+package tetris.fake;
 
 import java.awt.Color;
 
-import pl.edu.pw.elka.www.proz.tetris.model.Coordinates;
+import tetris.model.Coordinates;
 
 /**
  * Klasa reprezentująca pojedyczny blok planszy
@@ -11,7 +11,6 @@ import pl.edu.pw.elka.www.proz.tetris.model.Coordinates;
  */
 public class FakeBlock 
 {
-	
 	
 	/** Współrzędne bloku */
 	private Coordinates positon;

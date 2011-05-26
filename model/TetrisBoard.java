@@ -1,11 +1,11 @@
-package pl.edu.pw.elka.www.proz.tetris.model;
+package tetris.model;
 
 import java.awt.Color;
 import java.util.ArrayList;
 
-import pl.edu.pw.elka.www.proz.tetris.config.TetrisConfig;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeBlock;
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeBoard;
+import tetris.config.TetrisConfig;
+import tetris.fake.FakeBlock;
+import tetris.fake.FakeBoard;
 
 /**
  * Reprezentuje planszę gry tetris

@@ -1,13 +1,13 @@
 
-package pl.edu.pw.elka.www.proz.tetris;
+package tetris;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import pl.edu.pw.elka.www.proz.tetris.controller.Controller;
-import pl.edu.pw.elka.www.proz.tetris.events.GameEvent;
-import pl.edu.pw.elka.www.proz.tetris.model.Model;
-import pl.edu.pw.elka.www.proz.tetris.view.View;
+import tetris.controller.Controller;
+import tetris.events.GameEvent;
+import tetris.model.Model;
+import tetris.view.View;
 
 /**
  * Implementacja gry Tetris

@@ -1,10 +1,10 @@
-package pl.edu.pw.elka.www.proz.tetris.fake;
+package tetris.fake;
 
 import java.awt.Color;
 import java.util.HashSet;
 import java.util.Set;
 
-import pl.edu.pw.elka.www.proz.tetris.model.Coordinates;
+import tetris.model.Coordinates;
 
 /**
  * Klasa reprezentująca klocek

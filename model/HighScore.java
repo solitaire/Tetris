@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.model;
+package tetris.model;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import pl.edu.pw.elka.www.proz.tetris.config.TetrisConfig;
+import tetris.config.TetrisConfig;
 
 /**
  * Klasa reprezentuje najlepsze wyniki osiągnięte przez graczy

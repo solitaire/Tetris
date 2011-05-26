@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.events;
+package tetris.events;
 
 /**
  * Zdarzenie reprezentujące odliczenie kwantu czasu przez timer

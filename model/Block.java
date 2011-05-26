@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.model;
+package tetris.model;
 
 import java.awt.Color;
 

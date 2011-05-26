@@ -1,11 +1,11 @@
-package pl.edu.pw.elka.www.proz.tetris.view;
+package tetris.view;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import pl.edu.pw.elka.www.proz.tetris.fake.FakeHighScore;
+import tetris.fake.FakeHighScore;
 
 /**
  * Okienko wyświetlające najlepsze wyniki

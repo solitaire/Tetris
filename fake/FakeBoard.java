@@ -1,4 +1,4 @@
-package pl.edu.pw.elka.www.proz.tetris.fake;
+package tetris.fake;
 
 import java.util.ArrayList;
 
